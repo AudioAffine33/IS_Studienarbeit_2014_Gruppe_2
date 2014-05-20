@@ -57,8 +57,7 @@
             this.grpbx_bldel = new System.Windows.Forms.GroupBox();
             this.grpbx_brbbereich = new System.Windows.Forms.GroupBox();
             this.grpbx_bild = new System.Windows.Forms.GroupBox();
-            this.txtbx_bild = new System.Windows.Forms.TextBox();
-            this.txtbx_brbbereich = new System.Windows.Forms.TextBox();
+            this.pctbx_Bildbereich = new System.Windows.Forms.PictureBox();
             this.ms_menu = new System.Windows.Forms.MenuStrip();
             this.tsm_datei = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.Nmbrs_X)).BeginInit();
@@ -68,6 +67,7 @@
             this.grpbx_bldel.SuspendLayout();
             this.grpbx_brbbereich.SuspendLayout();
             this.grpbx_bild.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pctbx_Bildbereich)).BeginInit();
             this.ms_menu.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -98,6 +98,12 @@
             this.Nmbrs_X.Name = "Nmbrs_X";
             this.Nmbrs_X.Size = new System.Drawing.Size(60, 26);
             this.Nmbrs_X.TabIndex = 3;
+            this.Nmbrs_X.Value = new decimal(new int[] {
+            6,
+            0,
+            0,
+            0});
+            this.Nmbrs_X.ValueChanged += new System.EventHandler(this.Nmbrs_X_ValueChanged);
             // 
             // Nmbrs_Y
             // 
@@ -106,6 +112,7 @@
             this.Nmbrs_Y.Name = "Nmbrs_Y";
             this.Nmbrs_Y.Size = new System.Drawing.Size(60, 26);
             this.Nmbrs_Y.TabIndex = 4;
+            this.Nmbrs_Y.ValueChanged += new System.EventHandler(this.Nmbrs_Y_ValueChanged);
             // 
             // lbl_Breite
             // 
@@ -131,17 +138,29 @@
             // 
             this.Nmbrs_Hoehe.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Nmbrs_Hoehe.Location = new System.Drawing.Point(161, 53);
+            this.Nmbrs_Hoehe.Maximum = new decimal(new int[] {
+            330,
+            0,
+            0,
+            0});
             this.Nmbrs_Hoehe.Name = "Nmbrs_Hoehe";
             this.Nmbrs_Hoehe.Size = new System.Drawing.Size(60, 26);
             this.Nmbrs_Hoehe.TabIndex = 7;
+            this.Nmbrs_Hoehe.ValueChanged += new System.EventHandler(this.Nmbrs_Hoehe_ValueChanged);
             // 
             // Nmbrs_Breite
             // 
             this.Nmbrs_Breite.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Nmbrs_Breite.Location = new System.Drawing.Point(161, 19);
+            this.Nmbrs_Breite.Maximum = new decimal(new int[] {
+            808,
+            0,
+            0,
+            0});
             this.Nmbrs_Breite.Name = "Nmbrs_Breite";
             this.Nmbrs_Breite.Size = new System.Drawing.Size(60, 26);
             this.Nmbrs_Breite.TabIndex = 8;
+            this.Nmbrs_Breite.ValueChanged += new System.EventHandler(this.Nmbrs_Breite_ValueChanged);
             // 
             // lbl_typ
             // 
@@ -167,6 +186,7 @@
             this.lstbx_typ.Name = "lstbx_typ";
             this.lstbx_typ.Size = new System.Drawing.Size(115, 94);
             this.lstbx_typ.TabIndex = 11;
+            this.lstbx_typ.SelectedIndexChanged += new System.EventHandler(this.lstbx_typ_SelectedIndexChanged);
             // 
             // btn_reset
             // 
@@ -200,8 +220,10 @@
             // 
             // txtbx_color
             // 
+            this.txtbx_color.Enabled = false;
             this.txtbx_color.Location = new System.Drawing.Point(242, 23);
             this.txtbx_color.Name = "txtbx_color";
+            this.txtbx_color.ReadOnly = true;
             this.txtbx_color.Size = new System.Drawing.Size(181, 26);
             this.txtbx_color.TabIndex = 15;
             // 
@@ -214,6 +236,7 @@
             this.btn_color.TabIndex = 16;
             this.btn_color.Text = "...";
             this.btn_color.UseVisualStyleBackColor = true;
+            this.btn_color.Click += new System.EventHandler(this.btn_color_Click);
             // 
             // lbl_text
             // 
@@ -227,6 +250,7 @@
             // 
             // txtbx_text
             // 
+            this.txtbx_text.Enabled = false;
             this.txtbx_text.Location = new System.Drawing.Point(242, 67);
             this.txtbx_text.Name = "txtbx_text";
             this.txtbx_text.Size = new System.Drawing.Size(181, 26);
@@ -244,8 +268,10 @@
             // 
             // txtbx_font
             // 
+            this.txtbx_font.Enabled = false;
             this.txtbx_font.Location = new System.Drawing.Point(242, 114);
             this.txtbx_font.Name = "txtbx_font";
+            this.txtbx_font.ReadOnly = true;
             this.txtbx_font.Size = new System.Drawing.Size(181, 26);
             this.txtbx_font.TabIndex = 20;
             // 
@@ -258,6 +284,7 @@
             this.btn_font.TabIndex = 21;
             this.btn_font.Text = "...";
             this.btn_font.UseVisualStyleBackColor = true;
+            this.btn_font.Click += new System.EventHandler(this.btn_font_Click);
             // 
             // lbl_img
             // 
@@ -271,8 +298,10 @@
             // 
             // txtbx_img
             // 
+            this.txtbx_img.Enabled = false;
             this.txtbx_img.Location = new System.Drawing.Point(242, 161);
             this.txtbx_img.Name = "txtbx_img";
+            this.txtbx_img.ReadOnly = true;
             this.txtbx_img.Size = new System.Drawing.Size(181, 26);
             this.txtbx_img.TabIndex = 23;
             // 
@@ -285,9 +314,20 @@
             this.btn_img.TabIndex = 24;
             this.btn_img.Text = "...";
             this.btn_img.UseVisualStyleBackColor = true;
+            this.btn_img.Click += new System.EventHandler(this.btn_img_Click);
+            // 
+            // fd_font
+            // 
+            this.fd_font.FontMustExist = true;
+            this.fd_font.Apply += new System.EventHandler(this.fd_font_Apply);
+            // 
+            // ofd_img
+            // 
+            this.ofd_img.FileOk += new System.ComponentModel.CancelEventHandler(this.ofd_img_FileOk);
             // 
             // grpbx_bldel
             // 
+            this.grpbx_bldel.BackColor = System.Drawing.SystemColors.HighlightText;
             this.grpbx_bldel.Controls.Add(this.lbl_typ);
             this.grpbx_bldel.Controls.Add(this.lstbx_typ);
             this.grpbx_bldel.Controls.Add(this.btn_img);
@@ -312,6 +352,7 @@
             // 
             // grpbx_brbbereich
             // 
+            this.grpbx_brbbereich.BackColor = System.Drawing.SystemColors.HighlightText;
             this.grpbx_brbbereich.Controls.Add(this.lbl_X);
             this.grpbx_brbbereich.Controls.Add(this.lbl_Y);
             this.grpbx_brbbereich.Controls.Add(this.Nmbrs_X);
@@ -331,8 +372,7 @@
             // 
             // grpbx_bild
             // 
-            this.grpbx_bild.Controls.Add(this.txtbx_brbbereich);
-            this.grpbx_bild.Controls.Add(this.txtbx_bild);
+            this.grpbx_bild.Controls.Add(this.pctbx_Bildbereich);
             this.grpbx_bild.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.grpbx_bild.Location = new System.Drawing.Point(21, 262);
             this.grpbx_bild.Name = "grpbx_bild";
@@ -341,24 +381,16 @@
             this.grpbx_bild.TabStop = false;
             this.grpbx_bild.Text = "Bild";
             // 
-            // txtbx_bild
+            // pctbx_Bildbereich
             // 
-            this.txtbx_bild.Cursor = System.Windows.Forms.Cursors.Default;
-            this.txtbx_bild.Location = new System.Drawing.Point(6, 25);
-            this.txtbx_bild.Multiline = true;
-            this.txtbx_bild.Name = "txtbx_bild";
-            this.txtbx_bild.Size = new System.Drawing.Size(808, 300);
-            this.txtbx_bild.TabIndex = 0;
-            // 
-            // txtbx_brbbereich
-            // 
-            this.txtbx_brbbereich.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtbx_brbbereich.Cursor = System.Windows.Forms.Cursors.Default;
-            this.txtbx_brbbereich.Location = new System.Drawing.Point(104, 71);
-            this.txtbx_brbbereich.Multiline = true;
-            this.txtbx_brbbereich.Name = "txtbx_brbbereich";
-            this.txtbx_brbbereich.Size = new System.Drawing.Size(484, 172);
-            this.txtbx_brbbereich.TabIndex = 1;
+            this.pctbx_Bildbereich.BackColor = System.Drawing.SystemColors.Window;
+            this.pctbx_Bildbereich.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pctbx_Bildbereich.Location = new System.Drawing.Point(7, 26);
+            this.pctbx_Bildbereich.Name = "pctbx_Bildbereich";
+            this.pctbx_Bildbereich.Size = new System.Drawing.Size(807, 299);
+            this.pctbx_Bildbereich.TabIndex = 0;
+            this.pctbx_Bildbereich.TabStop = false;
+            this.pctbx_Bildbereich.Click += new System.EventHandler(this.pctbx_Bildbereich_Click);
             // 
             // ms_menu
             // 
@@ -373,6 +405,7 @@
             // 
             // tsm_datei
             // 
+            this.tsm_datei.BackColor = System.Drawing.SystemColors.Highlight;
             this.tsm_datei.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tsm_datei.Name = "tsm_datei";
             this.tsm_datei.Size = new System.Drawing.Size(58, 22);
@@ -382,6 +415,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(4F, 10F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.HotTrack;
             this.ClientSize = new System.Drawing.Size(850, 605);
             this.Controls.Add(this.grpbx_bild);
             this.Controls.Add(this.grpbx_brbbereich);
@@ -402,7 +436,7 @@
             this.grpbx_brbbereich.ResumeLayout(false);
             this.grpbx_brbbereich.PerformLayout();
             this.grpbx_bild.ResumeLayout(false);
-            this.grpbx_bild.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pctbx_Bildbereich)).EndInit();
             this.ms_menu.ResumeLayout(false);
             this.ms_menu.PerformLayout();
             this.ResumeLayout(false);
@@ -441,10 +475,9 @@
         private System.Windows.Forms.GroupBox grpbx_bldel;
         private System.Windows.Forms.GroupBox grpbx_brbbereich;
         private System.Windows.Forms.GroupBox grpbx_bild;
-        private System.Windows.Forms.TextBox txtbx_brbbereich;
-        private System.Windows.Forms.TextBox txtbx_bild;
         private System.Windows.Forms.MenuStrip ms_menu;
         private System.Windows.Forms.ToolStripMenuItem tsm_datei;
+        private System.Windows.Forms.PictureBox pctbx_Bildbereich;
     }
 }
 
