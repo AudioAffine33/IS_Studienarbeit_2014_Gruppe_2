@@ -32,12 +32,13 @@ namespace Studienarbeit_Bildeditor
         {
            
             XCoord = Convert.ToInt16(Nmbrs_X.Value);
+            this.pctbx_Bildbereich.Refresh();
         }
 
         private void Nmbrs_Y_ValueChanged(object sender, EventArgs e)
         {
-            YCoord = Convert.ToInt16(Nmbrs_Y.Value); 
-     
+            YCoord = Convert.ToInt16(Nmbrs_Y.Value);
+            this.pctbx_Bildbereich.Refresh();
         }
 
         private void pctbx_Bildbereich_Click(object sender, EventArgs e)
@@ -63,11 +64,13 @@ namespace Studienarbeit_Bildeditor
         private void Nmbrs_Breite_ValueChanged(object sender, EventArgs e)
         {
             Breite = Convert.ToInt16(Nmbrs_Breite.Value);
+            this.pctbx_Bildbereich.Refresh();
         }
 
         private void Nmbrs_Hoehe_ValueChanged(object sender, EventArgs e)
         {
             Hoehe = Convert.ToInt16(Nmbrs_Hoehe.Value);
+            this.pctbx_Bildbereich.Refresh();
         }
 
         private void lstbx_typ_SelectedIndexChanged(object sender, EventArgs e)
@@ -101,7 +104,7 @@ namespace Studienarbeit_Bildeditor
             {
                 txtbx_img.Enabled = false;
             }
-             
+            this.pctbx_Bildbereich.Refresh();   
         }
         
 
@@ -217,6 +220,7 @@ namespace Studienarbeit_Bildeditor
             Nmbrs_Breite.Value = Breite;
             Nmbrs_Hoehe.Value = Hoehe;
 
+            this.pctbx_Bildbereich.Refresh();
         }
 
         private void txtbx_text_TextChanged(object sender, EventArgs e)
