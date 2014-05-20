@@ -98,11 +98,6 @@
             this.Nmbrs_X.Name = "Nmbrs_X";
             this.Nmbrs_X.Size = new System.Drawing.Size(60, 26);
             this.Nmbrs_X.TabIndex = 3;
-            this.Nmbrs_X.Value = new decimal(new int[] {
-            6,
-            0,
-            0,
-            0});
             this.Nmbrs_X.ValueChanged += new System.EventHandler(this.Nmbrs_X_ValueChanged);
             // 
             // Nmbrs_Y
@@ -139,13 +134,18 @@
             this.Nmbrs_Hoehe.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Nmbrs_Hoehe.Location = new System.Drawing.Point(161, 53);
             this.Nmbrs_Hoehe.Maximum = new decimal(new int[] {
-            330,
+            296,
             0,
             0,
             0});
             this.Nmbrs_Hoehe.Name = "Nmbrs_Hoehe";
             this.Nmbrs_Hoehe.Size = new System.Drawing.Size(60, 26);
             this.Nmbrs_Hoehe.TabIndex = 7;
+            this.Nmbrs_Hoehe.Value = new decimal(new int[] {
+            296,
+            0,
+            0,
+            0});
             this.Nmbrs_Hoehe.ValueChanged += new System.EventHandler(this.Nmbrs_Hoehe_ValueChanged);
             // 
             // Nmbrs_Breite
@@ -153,13 +153,18 @@
             this.Nmbrs_Breite.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Nmbrs_Breite.Location = new System.Drawing.Point(161, 19);
             this.Nmbrs_Breite.Maximum = new decimal(new int[] {
-            808,
+            804,
             0,
             0,
             0});
             this.Nmbrs_Breite.Name = "Nmbrs_Breite";
             this.Nmbrs_Breite.Size = new System.Drawing.Size(60, 26);
             this.Nmbrs_Breite.TabIndex = 8;
+            this.Nmbrs_Breite.Value = new decimal(new int[] {
+            804,
+            0,
+            0,
+            0});
             this.Nmbrs_Breite.ValueChanged += new System.EventHandler(this.Nmbrs_Breite_ValueChanged);
             // 
             // lbl_typ
@@ -197,6 +202,7 @@
             this.btn_reset.TabIndex = 12;
             this.btn_reset.Text = "&Zurücksetzen";
             this.btn_reset.UseVisualStyleBackColor = true;
+            this.btn_reset.Click += new System.EventHandler(this.btn_reset_Click);
             // 
             // button1
             // 
@@ -391,6 +397,7 @@
             this.pctbx_Bildbereich.TabIndex = 0;
             this.pctbx_Bildbereich.TabStop = false;
             this.pctbx_Bildbereich.Click += new System.EventHandler(this.pctbx_Bildbereich_Click);
+            this.pctbx_Bildbereich.Paint += new System.Windows.Forms.PaintEventHandler(this.pctbx_Bildbereich_Paint);
             // 
             // ms_menu
             // 
@@ -415,7 +422,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(4F, 10F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.SystemColors.HotTrack;
+            this.BackColor = System.Drawing.SystemColors.Window;
             this.ClientSize = new System.Drawing.Size(850, 605);
             this.Controls.Add(this.grpbx_bild);
             this.Controls.Add(this.grpbx_brbbereich);

@@ -13,12 +13,12 @@ namespace Studienarbeit_Bildeditor
     public partial class Studienarbeit_Bildeditor : Form
     {
 
-        int XCoord;
-        int YCoord;
-        int Hoehe;
-        int Breite;
+        int XCoord = 0;
+        int YCoord = 0;
+        int Hoehe = 296;
+        int Breite = 804;
         string AuswahlTyp;
-        Point LeftMouse = new Point();
+        
 
         public Studienarbeit_Bildeditor()
         {
@@ -27,7 +27,8 @@ namespace Studienarbeit_Bildeditor
 
         private void Nmbrs_X_ValueChanged(object sender, EventArgs e)
         {
-            XCoord = Convert.ToInt16(Nmbrs_X.Value);    
+           
+            XCoord = Convert.ToInt16(Nmbrs_X.Value);
         }
 
         private void Nmbrs_Y_ValueChanged(object sender, EventArgs e)
@@ -38,8 +39,22 @@ namespace Studienarbeit_Bildeditor
 
         private void pctbx_Bildbereich_Click(object sender, EventArgs e)
         {
-            MouseEventArgs eM = (MouseEventArgs)e;
-            LeftMouse = eM.Location;
+            MouseEventArgs Mouseklick = (MouseEventArgs)e;
+
+            if (Mouseklick.Button == MouseButtons.Left)
+            {
+                XCoord = Mouseklick.Location.X;
+                YCoord = Mouseklick.Location.Y;
+
+               
+            }
+            if (Mouseklick.Button == MouseButtons.Right)
+            {
+                Breite = Mouseklick.Location.X;
+                Hoehe = Mouseklick.Location.Y;
+
+            }
+
         }
 
         private void Nmbrs_Breite_ValueChanged(object sender, EventArgs e)
@@ -121,6 +136,43 @@ namespace Studienarbeit_Bildeditor
         private void fd_font_Apply(object sender, EventArgs e)
         {
             txtbx_font.Text = fd_font.Font.ToString();
+        }
+
+        private void pctbx_Bildbereich_Paint(object sender, PaintEventArgs e)
+        {
+            Graphics g = e.Graphics;
+            Pen Bearbeitungsbereich = new Pen(Color.Black);
+            Bearbeitungsbereich.DashStyle = System.Drawing.Drawing2D.DashStyle.Dash;
+
+            if (XCoord != 0 | YCoord != 0 | Breite != 804 | Hoehe != 296)
+            {
+
+                g.DrawRectangle(Bearbeitungsbereich, XCoord, YCoord, Breite, Hoehe);
+
+                pctbx_Bildbereich.Refresh();
+
+            }
+            else { 
+
+            g.DrawRectangle(Bearbeitungsbereich,0,0,804,296);
+
+            pctbx_Bildbereich.Refresh();
+            }
+
+        }
+
+        private void btn_reset_Click(object sender, EventArgs e)
+        {
+            XCoord = 0;
+            YCoord = 0;
+            Breite = 804;
+            Hoehe = 296;
+
+            Nmbrs_X.Value = XCoord;
+            Nmbrs_Y.Value = YCoord;
+            Nmbrs_Breite.Value = Breite;
+            Nmbrs_Hoehe.Value = Hoehe;
+
         }
 
        
