@@ -261,6 +261,7 @@
             this.txtbx_text.Name = "txtbx_text";
             this.txtbx_text.Size = new System.Drawing.Size(181, 26);
             this.txtbx_text.TabIndex = 18;
+            this.txtbx_text.TextChanged += new System.EventHandler(this.txtbx_text_TextChanged);
             // 
             // lbl_font
             // 
@@ -405,6 +406,7 @@
             this.ms_menu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tsm_datei});
             this.ms_menu.Location = new System.Drawing.Point(0, 0);
+            this.ms_menu.MaximumSize = new System.Drawing.Size(850, 26);
             this.ms_menu.Name = "ms_menu";
             this.ms_menu.Size = new System.Drawing.Size(850, 26);
             this.ms_menu.TabIndex = 25;
@@ -422,6 +424,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(4F, 10F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoSize = true;
             this.BackColor = System.Drawing.SystemColors.Window;
             this.ClientSize = new System.Drawing.Size(850, 605);
             this.Controls.Add(this.grpbx_bild);
