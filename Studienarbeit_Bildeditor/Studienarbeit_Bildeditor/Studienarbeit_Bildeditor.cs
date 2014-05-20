@@ -49,7 +49,7 @@ namespace Studienarbeit_Bildeditor
                 XCoord = Mouseklick.Location.X;
                 YCoord = Mouseklick.Location.Y;
 
-               
+
             }
             if (Mouseklick.Button == MouseButtons.Right)
             {
@@ -57,7 +57,7 @@ namespace Studienarbeit_Bildeditor
                 Hoehe = Mouseklick.Location.Y;
 
             }
-
+            this.pctbx_Bildbereich.Refresh();
         }
 
         private void Nmbrs_Breite_ValueChanged(object sender, EventArgs e)
@@ -169,37 +169,38 @@ namespace Studienarbeit_Bildeditor
 
 
 
-            if (XCoord != 0 | YCoord != 0 | Breite != 804 | Hoehe != 296)
+            if (XCoord >= 0 | YCoord >= 0 | Breite <= 804 | Hoehe <= 296)
             {
 
                 g.DrawRectangle(Bearbeitungsbereich, XCoord, YCoord, Breite, Hoehe);
 
+            }
+            else
+            {
+
+                g.DrawRectangle(Bearbeitungsbereich, 0, 0, 804, 296);
+            }
+
+            if (Texteingabe == true)
+            {
+
+                g.DrawString(txtbx_text.Text, Font, Brushes.Black, XCoord, YCoord);
+
                 pctbx_Bildbereich.Refresh();
-
             }
-            else { 
+            else if (AuswahlTyp == "Linie")
+            {
 
-            g.DrawRectangle(Bearbeitungsbereich,0,0,804,296);
-
-            pctbx_Bildbereich.Refresh();
+                g.DrawLine(LiniePen, Point_LO, Point_RU);
+                pctbx_Bildbereich.Refresh();
             }
 
-             if (Texteingabe == true) { 
-            
-            g.DrawString(txtbx_text.Text,Font, Brushes.Black,XCoord,YCoord);
+            else if (AuswahlTyp == "Rechteck")
+            {
 
-            
+                g.DrawRectangle(RechteckPen, XCoord, YCoord, Breite, Hoehe);
+                pctbx_Bildbereich.Refresh();
             }
-             else if (AuswahlTyp == "Linie") {
-
-                 g.DrawLine(LiniePen, Point_LO, Point_RU);
-             }
-
-             else if (AuswahlTyp == "Rechteck") {
-
-                 g.DrawRectangle(RechteckPen, XCoord, YCoord, Breite, Hoehe);
-             
-             }
 
            
         }
