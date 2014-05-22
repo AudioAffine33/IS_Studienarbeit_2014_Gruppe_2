@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.lbl_X = new System.Windows.Forms.Label();
             this.lbl_Y = new System.Windows.Forms.Label();
             this.Nmbrs_X = new System.Windows.Forms.NumericUpDown();
@@ -60,6 +61,7 @@
             this.pctbx_Bildbereich = new System.Windows.Forms.PictureBox();
             this.ms_menu = new System.Windows.Forms.MenuStrip();
             this.tsm_datei = new System.Windows.Forms.ToolStripMenuItem();
+            this.tim_Brbbereich = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.Nmbrs_X)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Nmbrs_Y)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Nmbrs_Hoehe)).BeginInit();
@@ -420,6 +422,11 @@
             this.tsm_datei.Size = new System.Drawing.Size(58, 22);
             this.tsm_datei.Text = "&Datei";
             // 
+            // tim_Brbbereich
+            // 
+            this.tim_Brbbereich.Enabled = true;
+            this.tim_Brbbereich.Tick += new System.EventHandler(this.tim_Brbbereich_Tick);
+            // 
             // Studienarbeit_Bildeditor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(4F, 10F);
@@ -488,6 +495,7 @@
         private System.Windows.Forms.MenuStrip ms_menu;
         private System.Windows.Forms.ToolStripMenuItem tsm_datei;
         private System.Windows.Forms.PictureBox pctbx_Bildbereich;
+        private System.Windows.Forms.Timer tim_Brbbereich;
     }
 }
 
