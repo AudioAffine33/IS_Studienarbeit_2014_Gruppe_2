@@ -184,16 +184,16 @@ namespace Studienarbeit_Bildeditor
             FontText = new Font("Arial", 19);
 
 
-            //if (TimeGerade == true)
-            //{
+            if (TimeGerade == true)
+            {
                 Bearbeitungsbereich = new Pen(Color.Black);
                 Bearbeitungsbereich.DashStyle = System.Drawing.Drawing2D.DashStyle.Dash;
              
-            //}
-           // else if (TimeGerade == false) {
+            }
+            else if (TimeGerade == false) {
 
-           //     Bearbeitungsbereich = new Pen(Color.White);
-           //     }
+                Bearbeitungsbereich = new Pen(Color.White);
+                }
 
              if (XCoord >= 0 | YCoord >= 0 | Breite <= 804 | Hoehe <= 296)
                 {
@@ -258,7 +258,7 @@ namespace Studienarbeit_Bildeditor
 
             Time++;
 
-            if (Time / 2 == 0)
+            if (Time%2 == 0)
             {
 
                 TimeGerade = true;
@@ -269,7 +269,7 @@ namespace Studienarbeit_Bildeditor
                 TimeGerade = false;
        
             }
-
+            
             this.pctbx_Bildbereich.Refresh();
         }
 
