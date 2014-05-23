@@ -97,6 +97,11 @@
             // 
             this.Nmbrs_X.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Nmbrs_X.Location = new System.Drawing.Point(35, 19);
+            this.Nmbrs_X.Maximum = new decimal(new int[] {
+            807,
+            0,
+            0,
+            0});
             this.Nmbrs_X.Name = "Nmbrs_X";
             this.Nmbrs_X.Size = new System.Drawing.Size(60, 26);
             this.Nmbrs_X.TabIndex = 3;
@@ -106,6 +111,11 @@
             // 
             this.Nmbrs_Y.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Nmbrs_Y.Location = new System.Drawing.Point(35, 51);
+            this.Nmbrs_Y.Maximum = new decimal(new int[] {
+            299,
+            0,
+            0,
+            0});
             this.Nmbrs_Y.Name = "Nmbrs_Y";
             this.Nmbrs_Y.Size = new System.Drawing.Size(60, 26);
             this.Nmbrs_Y.TabIndex = 4;
@@ -136,7 +146,7 @@
             this.Nmbrs_Hoehe.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Nmbrs_Hoehe.Location = new System.Drawing.Point(161, 53);
             this.Nmbrs_Hoehe.Maximum = new decimal(new int[] {
-            296,
+            299,
             0,
             0,
             0});
@@ -144,7 +154,7 @@
             this.Nmbrs_Hoehe.Size = new System.Drawing.Size(60, 26);
             this.Nmbrs_Hoehe.TabIndex = 7;
             this.Nmbrs_Hoehe.Value = new decimal(new int[] {
-            296,
+            299,
             0,
             0,
             0});
@@ -155,7 +165,7 @@
             this.Nmbrs_Breite.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Nmbrs_Breite.Location = new System.Drawing.Point(161, 19);
             this.Nmbrs_Breite.Maximum = new decimal(new int[] {
-            804,
+            807,
             0,
             0,
             0});
@@ -163,7 +173,7 @@
             this.Nmbrs_Breite.Size = new System.Drawing.Size(60, 26);
             this.Nmbrs_Breite.TabIndex = 8;
             this.Nmbrs_Breite.Value = new decimal(new int[] {
-            804,
+            807,
             0,
             0,
             0});

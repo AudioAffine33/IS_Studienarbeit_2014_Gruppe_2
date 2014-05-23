@@ -12,20 +12,24 @@ namespace Studienarbeit_Bildeditor
 {
     public partial class Studienarbeit_Bildeditor : Form
     {
+        bool Bildauswahl = false;
+        bool Farbauswahl = false;
+        bool Fontauswahl = false;
         bool TimeGerade = true;
         bool Texteingabe = false;
         int Time = 0;
         int XCoord = 0;
         int YCoord = 0;
-        int Hoehe = 296;
-        int Breite = 804;
+        int Hoehe = 299;
+        int Breite = 807;
         string AuswahlTyp;
-        Brush Fontcolor = Brushes.Black;
+        SolidBrush FontBrush = new SolidBrush(System.Drawing.Color.Black);
         Pen LiniePen = new Pen(Brushes.Black);
         Pen RechteckPen = new Pen(Brushes.Black);
-        Pen Bearbeitungsbereich = new Pen(Color.Black);
+        Pen Bearbeitungsbereich;
         Color AuswahlColor = Color.FromArgb(255,255,255);
         Font FontText;
+        int Textbreite;
  
 
 
@@ -44,6 +48,7 @@ namespace Studienarbeit_Bildeditor
 
         private void Nmbrs_Y_ValueChanged(object sender, EventArgs e)
         {
+
             YCoord = Convert.ToInt16(Nmbrs_Y.Value);
             this.pctbx_Bildbereich.Refresh();
         }
@@ -54,16 +59,20 @@ namespace Studienarbeit_Bildeditor
 
             if (Mouseklick.Button == MouseButtons.Left)
             {
+               
                 XCoord = Mouseklick.Location.X;
                 YCoord = Mouseklick.Location.Y;
-
+                Nmbrs_X.Value = XCoord;
+                Nmbrs_Y.Value = YCoord;
 
             }
             if (Mouseklick.Button == MouseButtons.Right)
             {
+                
                 Breite = Mouseklick.Location.X - XCoord;
                 Hoehe = Mouseklick.Location.Y - YCoord;
-
+                Nmbrs_Breite.Value = Breite;
+                Nmbrs_Hoehe.Value = Hoehe;
             }
             this.pctbx_Bildbereich.Refresh();
         }
@@ -86,7 +95,7 @@ namespace Studienarbeit_Bildeditor
 
             if (AuswahlTyp == "Linie" | AuswahlTyp == "Rechteck" | AuswahlTyp == "Text")
             {
-
+  
                 txtbx_color.Enabled = true;
             }
             else {
@@ -95,6 +104,7 @@ namespace Studienarbeit_Bildeditor
             }
             if (AuswahlTyp == "Text")
             {
+                txtbx_text.Text = "Dies ist ein Text";
                 txtbx_font.Enabled = true;
                 txtbx_text.Enabled = true;
             }
@@ -105,6 +115,8 @@ namespace Studienarbeit_Bildeditor
             }
             if (AuswahlTyp == "Bild") {
 
+                txtbx_font.Text = "";
+                txtbx_text.Text = "";
                 txtbx_img.Enabled = true;
             }
             else
@@ -120,13 +132,18 @@ namespace Studienarbeit_Bildeditor
 
             if (AuswahlTyp == "Linie" | AuswahlTyp == "Rechteck" | AuswahlTyp == "Text")
             {
-                cd_color.ShowDialog();
+
                 if (cd_color.ShowDialog() == System.Windows.Forms.DialogResult.OK)
                 {
 
                     AuswahlColor = cd_color.Color;
                     txtbx_color.BackColor = AuswahlColor;
+                    LiniePen = new Pen(AuswahlColor);
+                    RechteckPen = new Pen(AuswahlColor);
+                    FontBrush = new SolidBrush(AuswahlColor);
+                    Farbauswahl = true;
 
+                    pctbx_Bildbereich.Refresh();
                 }
 
 
@@ -143,12 +160,15 @@ namespace Studienarbeit_Bildeditor
         {
             if (AuswahlTyp == "Text")
             {
-                fd_font.ShowDialog();
+
 
                 if (fd_font.ShowDialog() == System.Windows.Forms.DialogResult.OK) {
                     txtbx_font.Text = fd_font.Font.FontFamily.Name;
                     FontText = fd_font.Font;
+                    Fontauswahl = true;
+                    pctbx_Bildbereich.Refresh();
                 }
+
             }
             else {
 
@@ -161,7 +181,12 @@ namespace Studienarbeit_Bildeditor
         {
             if (AuswahlTyp == "Bild") {
 
-                ofd_img.ShowDialog();
+                if (ofd_img.ShowDialog() == System.Windows.Forms.DialogResult.OK) {
+
+
+                    txtbx_img.Text = ofd_img.FileName;
+                    Bildauswahl = true;
+                }
             }
         }
 
@@ -181,12 +206,23 @@ namespace Studienarbeit_Bildeditor
             Graphics g = e.Graphics;
             Point Point_LO = new Point(XCoord, YCoord);
             Point Point_RU = new Point(Breite+XCoord, Hoehe+YCoord);
-            FontText = new Font("Arial", 19);
+            Point Point_RO = new Point(XCoord, Hoehe + YCoord);
+            Point[] Picture = new Point[3];
+
 
 
             if (TimeGerade == true)
             {
-                Bearbeitungsbereich = new Pen(Color.Black);
+                if (Farbauswahl == false)
+                {
+
+                    Bearbeitungsbereich = new Pen(Brushes.Black);
+                }
+                else
+                {
+                    Bearbeitungsbereich = new Pen(AuswahlColor);
+                }
+
                 Bearbeitungsbereich.DashStyle = System.Drawing.Drawing2D.DashStyle.Dash;
              
             }
@@ -198,36 +234,63 @@ namespace Studienarbeit_Bildeditor
              if (XCoord >= 0 | YCoord >= 0 | Breite <= 804 | Hoehe <= 296)
                 {
 
+
                     g.DrawRectangle(Bearbeitungsbereich, XCoord, YCoord, Breite, Hoehe);
 
                 }
              else
                 {
 
-                    g.DrawRectangle(Bearbeitungsbereich, 0, 0, 804, 296);
-                }
-            
 
-            if (Texteingabe == true)
+                    g.DrawRectangle(Bearbeitungsbereich, 0, 0, 804, 296);
+
+                }
+
+
+             if (AuswahlTyp == "Text")
             {
 
-                g.DrawString(txtbx_text.Text, Font, Fontcolor, XCoord, YCoord);
+                if (Fontauswahl == false) {
+                FontText = new Font("Arial", 19);
+                txtbx_font.Text = Convert.ToString(FontText.Name);
+                }
 
-                pctbx_Bildbereich.Refresh();
+                g.DrawString(txtbx_text.Text, FontText, FontBrush, XCoord, YCoord);
+
+
+
+
+
             }
             else if (AuswahlTyp == "Linie")
             {
-
+                txtbx_font.Text = "";
+                txtbx_text.Text = "";
                 g.DrawLine(LiniePen, Point_LO, Point_RU);
-                pctbx_Bildbereich.Refresh();
+
+
+
             }
 
             else if (AuswahlTyp == "Rechteck")
             {
-
+                txtbx_font.Text = "";
+                txtbx_text.Text = "";
                 g.DrawRectangle(RechteckPen, XCoord, YCoord, Breite, Hoehe);
-                pctbx_Bildbereich.Refresh();
+
             }
+             else if (AuswahlTyp == "Bild") {
+
+                 if (Bildauswahl == true) {
+                     Picture[0] = Point_LO;
+                     Picture[1] = Point_RU;
+                     Picture[2] = Point_RO;
+
+               
+                 
+                 }
+             
+             }
 
            
         }
@@ -249,6 +312,7 @@ namespace Studienarbeit_Bildeditor
 
         private void txtbx_text_TextChanged(object sender, EventArgs e)
         {
+            
             Texteingabe = true;
           
         }
