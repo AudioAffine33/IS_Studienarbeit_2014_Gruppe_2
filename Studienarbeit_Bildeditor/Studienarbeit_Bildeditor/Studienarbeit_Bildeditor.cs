@@ -29,6 +29,7 @@ namespace Studienarbeit_Bildeditor
         Pen Bearbeitungsbereich;
         Color AuswahlColor = Color.FromArgb(255,255,255);
         Font FontText;
+        Graphics AuswahlBild;
         int Textbreite;
  
 
@@ -43,6 +44,12 @@ namespace Studienarbeit_Bildeditor
         {
            
             XCoord = Convert.ToInt16(Nmbrs_X.Value);
+            
+           if (XCoord + Breite >= 807) {
+                Breite = 807-XCoord;
+                Nmbrs_Breite.Value = Breite;       
+            }
+           
             this.pctbx_Bildbereich.Refresh();
         }
 
@@ -50,6 +57,11 @@ namespace Studienarbeit_Bildeditor
         {
 
             YCoord = Convert.ToInt16(Nmbrs_Y.Value);
+            if (YCoord + Hoehe >= 299) {
+                Hoehe = 299 - YCoord;
+                Nmbrs_Hoehe.Value = Hoehe;
+            
+            }
             this.pctbx_Bildbereich.Refresh();
         }
 
@@ -71,6 +83,14 @@ namespace Studienarbeit_Bildeditor
                 
                 Breite = Mouseklick.Location.X - XCoord;
                 Hoehe = Mouseklick.Location.Y - YCoord;
+                if(Breite <0){
+                    Breite = Breite * -1;
+                }
+                if (Hoehe < 0) {
+                    Hoehe = Hoehe * -1;
+                
+                }
+                
                 Nmbrs_Breite.Value = Breite;
                 Nmbrs_Hoehe.Value = Hoehe;
             }
@@ -163,7 +183,7 @@ namespace Studienarbeit_Bildeditor
 
 
                 if (fd_font.ShowDialog() == System.Windows.Forms.DialogResult.OK) {
-                    txtbx_font.Text = fd_font.Font.FontFamily.Name;
+                    txtbx_font.Text = fd_font.Font.FontFamily.Name+", "+fd_font.Font.Style+", "+fd_font.Font.SizeInPoints+"pt";
                     FontText = fd_font.Font;
                     Fontauswahl = true;
                     pctbx_Bildbereich.Refresh();
@@ -182,8 +202,7 @@ namespace Studienarbeit_Bildeditor
             if (AuswahlTyp == "Bild") {
 
                 if (ofd_img.ShowDialog() == System.Windows.Forms.DialogResult.OK) {
-
-
+                
                     txtbx_img.Text = ofd_img.FileName;
                     Bildauswahl = true;
                 }
@@ -206,8 +225,7 @@ namespace Studienarbeit_Bildeditor
             Graphics g = e.Graphics;
             Point Point_LO = new Point(XCoord, YCoord);
             Point Point_RU = new Point(Breite+XCoord, Hoehe+YCoord);
-            Point Point_RO = new Point(XCoord, Hoehe + YCoord);
-            Point[] Picture = new Point[3];
+         //   Point Point_RO = new Point(XCoord, Hoehe + YCoord);
 
 
 
@@ -252,7 +270,7 @@ namespace Studienarbeit_Bildeditor
 
                 if (Fontauswahl == false) {
                 FontText = new Font("Arial", 19);
-                txtbx_font.Text = Convert.ToString(FontText.Name);
+                txtbx_font.Text = FontText.FontFamily.Name+", "+FontText.Style+", "+FontText.SizeInPoints+"pt";
                 }
 
                 g.DrawString(txtbx_text.Text, FontText, FontBrush, XCoord, YCoord);
@@ -282,11 +300,8 @@ namespace Studienarbeit_Bildeditor
              else if (AuswahlTyp == "Bild") {
 
                  if (Bildauswahl == true) {
-                     Picture[0] = Point_LO;
-                     Picture[1] = Point_RU;
-                     Picture[2] = Point_RO;
 
-               
+                     
                  
                  }
              

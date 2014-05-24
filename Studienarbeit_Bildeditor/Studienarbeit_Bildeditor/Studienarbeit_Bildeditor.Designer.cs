@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Studienarbeit_Bildeditor));
             this.lbl_X = new System.Windows.Forms.Label();
             this.lbl_Y = new System.Windows.Forms.Label();
             this.Nmbrs_X = new System.Windows.Forms.NumericUpDown();
@@ -40,7 +41,7 @@
             this.lbl_typ = new System.Windows.Forms.Label();
             this.lstbx_typ = new System.Windows.Forms.ListBox();
             this.btn_reset = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btn_insert = new System.Windows.Forms.Button();
             this.lbl_color = new System.Windows.Forms.Label();
             this.txtbx_color = new System.Windows.Forms.TextBox();
             this.btn_color = new System.Windows.Forms.Button();
@@ -95,6 +96,7 @@
             // 
             // Nmbrs_X
             // 
+            this.Nmbrs_X.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.Nmbrs_X.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Nmbrs_X.Location = new System.Drawing.Point(35, 19);
             this.Nmbrs_X.Maximum = new decimal(new int[] {
@@ -103,12 +105,13 @@
             0,
             0});
             this.Nmbrs_X.Name = "Nmbrs_X";
-            this.Nmbrs_X.Size = new System.Drawing.Size(60, 26);
+            this.Nmbrs_X.Size = new System.Drawing.Size(60, 22);
             this.Nmbrs_X.TabIndex = 3;
             this.Nmbrs_X.ValueChanged += new System.EventHandler(this.Nmbrs_X_ValueChanged);
             // 
             // Nmbrs_Y
             // 
+            this.Nmbrs_Y.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.Nmbrs_Y.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Nmbrs_Y.Location = new System.Drawing.Point(35, 51);
             this.Nmbrs_Y.Maximum = new decimal(new int[] {
@@ -117,7 +120,7 @@
             0,
             0});
             this.Nmbrs_Y.Name = "Nmbrs_Y";
-            this.Nmbrs_Y.Size = new System.Drawing.Size(60, 26);
+            this.Nmbrs_Y.Size = new System.Drawing.Size(60, 22);
             this.Nmbrs_Y.TabIndex = 4;
             this.Nmbrs_Y.ValueChanged += new System.EventHandler(this.Nmbrs_Y_ValueChanged);
             // 
@@ -143,6 +146,7 @@
             // 
             // Nmbrs_Hoehe
             // 
+            this.Nmbrs_Hoehe.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.Nmbrs_Hoehe.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Nmbrs_Hoehe.Location = new System.Drawing.Point(161, 53);
             this.Nmbrs_Hoehe.Maximum = new decimal(new int[] {
@@ -151,7 +155,7 @@
             0,
             0});
             this.Nmbrs_Hoehe.Name = "Nmbrs_Hoehe";
-            this.Nmbrs_Hoehe.Size = new System.Drawing.Size(60, 26);
+            this.Nmbrs_Hoehe.Size = new System.Drawing.Size(60, 22);
             this.Nmbrs_Hoehe.TabIndex = 7;
             this.Nmbrs_Hoehe.Value = new decimal(new int[] {
             299,
@@ -162,6 +166,7 @@
             // 
             // Nmbrs_Breite
             // 
+            this.Nmbrs_Breite.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.Nmbrs_Breite.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Nmbrs_Breite.Location = new System.Drawing.Point(161, 19);
             this.Nmbrs_Breite.Maximum = new decimal(new int[] {
@@ -170,7 +175,7 @@
             0,
             0});
             this.Nmbrs_Breite.Name = "Nmbrs_Breite";
-            this.Nmbrs_Breite.Size = new System.Drawing.Size(60, 26);
+            this.Nmbrs_Breite.Size = new System.Drawing.Size(60, 22);
             this.Nmbrs_Breite.TabIndex = 8;
             this.Nmbrs_Breite.Value = new decimal(new int[] {
             807,
@@ -191,6 +196,7 @@
             // 
             // lstbx_typ
             // 
+            this.lstbx_typ.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.lstbx_typ.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lstbx_typ.FormattingEnabled = true;
             this.lstbx_typ.ItemHeight = 18;
@@ -201,13 +207,19 @@
             "Text"});
             this.lstbx_typ.Location = new System.Drawing.Point(9, 53);
             this.lstbx_typ.Name = "lstbx_typ";
-            this.lstbx_typ.Size = new System.Drawing.Size(115, 94);
+            this.lstbx_typ.Size = new System.Drawing.Size(115, 90);
             this.lstbx_typ.TabIndex = 11;
             this.lstbx_typ.SelectedIndexChanged += new System.EventHandler(this.lstbx_typ_SelectedIndexChanged);
             // 
             // btn_reset
             // 
+            this.btn_reset.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btn_reset.BackgroundImage")));
+            this.btn_reset.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btn_reset.FlatAppearance.BorderColor = System.Drawing.Color.Aqua;
+            this.btn_reset.FlatAppearance.BorderSize = 0;
+            this.btn_reset.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_reset.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_reset.ForeColor = System.Drawing.Color.Black;
             this.btn_reset.Location = new System.Drawing.Point(8, 157);
             this.btn_reset.Name = "btn_reset";
             this.btn_reset.Size = new System.Drawing.Size(112, 33);
@@ -216,15 +228,20 @@
             this.btn_reset.UseVisualStyleBackColor = true;
             this.btn_reset.Click += new System.EventHandler(this.btn_reset_Click);
             // 
-            // button1
+            // btn_insert
             // 
-            this.button1.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(9, 157);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(93, 33);
-            this.button1.TabIndex = 13;
-            this.button1.Text = "&Einfügen";
-            this.button1.UseVisualStyleBackColor = true;
+            this.btn_insert.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btn_insert.BackgroundImage")));
+            this.btn_insert.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btn_insert.FlatAppearance.BorderColor = System.Drawing.Color.Black;
+            this.btn_insert.FlatAppearance.BorderSize = 0;
+            this.btn_insert.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_insert.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_insert.Location = new System.Drawing.Point(9, 157);
+            this.btn_insert.Name = "btn_insert";
+            this.btn_insert.Size = new System.Drawing.Size(93, 33);
+            this.btn_insert.TabIndex = 13;
+            this.btn_insert.Text = "&Einfügen";
+            this.btn_insert.UseVisualStyleBackColor = true;
             // 
             // lbl_color
             // 
@@ -238,22 +255,29 @@
             // 
             // txtbx_color
             // 
+            this.txtbx_color.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtbx_color.Enabled = false;
-            this.txtbx_color.Location = new System.Drawing.Point(242, 23);
+            this.txtbx_color.Location = new System.Drawing.Point(242, 28);
             this.txtbx_color.Name = "txtbx_color";
             this.txtbx_color.ReadOnly = true;
-            this.txtbx_color.Size = new System.Drawing.Size(181, 26);
+            this.txtbx_color.Size = new System.Drawing.Size(181, 19);
             this.txtbx_color.TabIndex = 15;
             // 
             // btn_color
             // 
+            this.btn_color.BackColor = System.Drawing.Color.Transparent;
+            this.btn_color.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btn_color.BackgroundImage")));
+            this.btn_color.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btn_color.FlatAppearance.BorderColor = System.Drawing.Color.Aqua;
+            this.btn_color.FlatAppearance.BorderSize = 0;
+            this.btn_color.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_color.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_color.Location = new System.Drawing.Point(429, 27);
             this.btn_color.Name = "btn_color";
             this.btn_color.Size = new System.Drawing.Size(33, 20);
             this.btn_color.TabIndex = 16;
             this.btn_color.Text = "...";
-            this.btn_color.UseVisualStyleBackColor = true;
+            this.btn_color.UseVisualStyleBackColor = false;
             this.btn_color.Click += new System.EventHandler(this.btn_color_Click);
             // 
             // lbl_text
@@ -268,10 +292,11 @@
             // 
             // txtbx_text
             // 
+            this.txtbx_text.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtbx_text.Enabled = false;
-            this.txtbx_text.Location = new System.Drawing.Point(242, 67);
+            this.txtbx_text.Location = new System.Drawing.Point(242, 69);
             this.txtbx_text.Name = "txtbx_text";
-            this.txtbx_text.Size = new System.Drawing.Size(181, 26);
+            this.txtbx_text.Size = new System.Drawing.Size(181, 19);
             this.txtbx_text.TabIndex = 18;
             this.txtbx_text.TextChanged += new System.EventHandler(this.txtbx_text_TextChanged);
             // 
@@ -279,7 +304,7 @@
             // 
             this.lbl_font.AutoSize = true;
             this.lbl_font.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_font.Location = new System.Drawing.Point(182, 117);
+            this.lbl_font.Location = new System.Drawing.Point(182, 120);
             this.lbl_font.Name = "lbl_font";
             this.lbl_font.Size = new System.Drawing.Size(56, 18);
             this.lbl_font.TabIndex = 19;
@@ -287,15 +312,21 @@
             // 
             // txtbx_font
             // 
+            this.txtbx_font.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtbx_font.Enabled = false;
-            this.txtbx_font.Location = new System.Drawing.Point(242, 114);
+            this.txtbx_font.Location = new System.Drawing.Point(242, 119);
             this.txtbx_font.Name = "txtbx_font";
             this.txtbx_font.ReadOnly = true;
-            this.txtbx_font.Size = new System.Drawing.Size(181, 26);
+            this.txtbx_font.Size = new System.Drawing.Size(181, 19);
             this.txtbx_font.TabIndex = 20;
             // 
             // btn_font
             // 
+            this.btn_font.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btn_font.BackgroundImage")));
+            this.btn_font.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btn_font.FlatAppearance.BorderColor = System.Drawing.Color.Aqua;
+            this.btn_font.FlatAppearance.BorderSize = 0;
+            this.btn_font.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_font.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_font.Location = new System.Drawing.Point(429, 118);
             this.btn_font.Name = "btn_font";
@@ -309,7 +340,7 @@
             // 
             this.lbl_img.AutoSize = true;
             this.lbl_img.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_img.Location = new System.Drawing.Point(182, 164);
+            this.lbl_img.Location = new System.Drawing.Point(182, 167);
             this.lbl_img.Name = "lbl_img";
             this.lbl_img.Size = new System.Drawing.Size(39, 18);
             this.lbl_img.TabIndex = 22;
@@ -317,15 +348,21 @@
             // 
             // txtbx_img
             // 
+            this.txtbx_img.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtbx_img.Enabled = false;
-            this.txtbx_img.Location = new System.Drawing.Point(242, 161);
+            this.txtbx_img.Location = new System.Drawing.Point(242, 166);
             this.txtbx_img.Name = "txtbx_img";
             this.txtbx_img.ReadOnly = true;
-            this.txtbx_img.Size = new System.Drawing.Size(181, 26);
+            this.txtbx_img.Size = new System.Drawing.Size(181, 19);
             this.txtbx_img.TabIndex = 23;
             // 
             // btn_img
             // 
+            this.btn_img.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btn_img.BackgroundImage")));
+            this.btn_img.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btn_img.FlatAppearance.BorderColor = System.Drawing.Color.Aqua;
+            this.btn_img.FlatAppearance.BorderSize = 0;
+            this.btn_img.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_img.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_img.Location = new System.Drawing.Point(429, 165);
             this.btn_img.Name = "btn_img";
@@ -346,11 +383,11 @@
             // 
             // grpbx_bldel
             // 
-            this.grpbx_bldel.BackColor = System.Drawing.SystemColors.HighlightText;
+            this.grpbx_bldel.BackColor = System.Drawing.Color.Transparent;
             this.grpbx_bldel.Controls.Add(this.lbl_typ);
             this.grpbx_bldel.Controls.Add(this.lstbx_typ);
             this.grpbx_bldel.Controls.Add(this.btn_img);
-            this.grpbx_bldel.Controls.Add(this.button1);
+            this.grpbx_bldel.Controls.Add(this.btn_insert);
             this.grpbx_bldel.Controls.Add(this.txtbx_img);
             this.grpbx_bldel.Controls.Add(this.lbl_color);
             this.grpbx_bldel.Controls.Add(this.lbl_img);
@@ -371,7 +408,7 @@
             // 
             // grpbx_brbbereich
             // 
-            this.grpbx_brbbereich.BackColor = System.Drawing.SystemColors.HighlightText;
+            this.grpbx_brbbereich.BackColor = System.Drawing.Color.Transparent;
             this.grpbx_brbbereich.Controls.Add(this.lbl_X);
             this.grpbx_brbbereich.Controls.Add(this.lbl_Y);
             this.grpbx_brbbereich.Controls.Add(this.Nmbrs_X);
@@ -391,6 +428,7 @@
             // 
             // grpbx_bild
             // 
+            this.grpbx_bild.BackColor = System.Drawing.Color.Transparent;
             this.grpbx_bild.Controls.Add(this.pctbx_Bildbereich);
             this.grpbx_bild.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.grpbx_bild.Location = new System.Drawing.Point(21, 262);
@@ -414,6 +452,7 @@
             // 
             // ms_menu
             // 
+            this.ms_menu.BackColor = System.Drawing.Color.White;
             this.ms_menu.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ms_menu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tsm_datei});
@@ -426,7 +465,7 @@
             // 
             // tsm_datei
             // 
-            this.tsm_datei.BackColor = System.Drawing.SystemColors.Highlight;
+            this.tsm_datei.BackColor = System.Drawing.Color.White;
             this.tsm_datei.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tsm_datei.Name = "tsm_datei";
             this.tsm_datei.Size = new System.Drawing.Size(58, 22);
@@ -442,14 +481,19 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(4F, 10F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
-            this.BackColor = System.Drawing.SystemColors.Window;
+            this.BackColor = System.Drawing.Color.White;
+            this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(850, 605);
             this.Controls.Add(this.grpbx_bild);
             this.Controls.Add(this.grpbx_brbbereich);
             this.Controls.Add(this.grpbx_bldel);
             this.Controls.Add(this.ms_menu);
             this.Cursor = System.Windows.Forms.Cursors.Default;
+            this.DoubleBuffered = true;
             this.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
+            this.ForeColor = System.Drawing.SystemColors.InfoText;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MainMenuStrip = this.ms_menu;
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "Studienarbeit_Bildeditor";
@@ -484,7 +528,7 @@
         private System.Windows.Forms.Label lbl_typ;
         private System.Windows.Forms.ListBox lstbx_typ;
         private System.Windows.Forms.Button btn_reset;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btn_insert;
         private System.Windows.Forms.Label lbl_color;
         private System.Windows.Forms.TextBox txtbx_color;
         private System.Windows.Forms.Button btn_color;
