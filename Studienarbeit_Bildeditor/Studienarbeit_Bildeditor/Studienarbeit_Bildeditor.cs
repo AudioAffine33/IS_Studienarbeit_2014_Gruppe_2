@@ -18,6 +18,7 @@ namespace Studienarbeit_Bildeditor
         bool TimeGerade = true;
         bool Texteingabe = false;
         bool Eingefügt = false;
+        bool Einfügen = false;
         int Time = 0;
         int XCoord = 0;
         int YCoord = 0;
@@ -32,7 +33,9 @@ namespace Studienarbeit_Bildeditor
         Font FontText;
         Image AuswahlBild;
         Image BearbeitungsbereichBild;
-        int Textbreite;
+
+
+
  
 
 
@@ -246,7 +249,7 @@ namespace Studienarbeit_Bildeditor
 
             if( Eingefügt == true){
 
-                g.DrawImage(BearbeitungsbereichBild, 0, 0, pctbx_Bildbereich.Width, pctbx_Bildbereich.Height);
+                g.DrawImage(BearbeitungsbereichBild,-1,-1,pctbx_Bildbereich.Width,pctbx_Bildbereich.Height);
 
             }
 
@@ -269,15 +272,17 @@ namespace Studienarbeit_Bildeditor
 
                 Bearbeitungsbereich = new Pen(Color.White);
                 }
-
-             if (XCoord >= 0 | YCoord >= 0 | Breite <= 804 | Hoehe <= 296)
+            if (Einfügen == true) { }
+            else
+            {
+                if (XCoord >= 0 | YCoord >= 0 | Breite <= 804 | Hoehe <= 296)
                 {
 
 
                     g.DrawRectangle(Bearbeitungsbereich, XCoord, YCoord, Breite, Hoehe);
 
                 }
-             else
+                else
                 {
 
 
@@ -285,7 +290,7 @@ namespace Studienarbeit_Bildeditor
 
                 }
 
-
+            }
              if (AuswahlTyp == "Text")
             {
 
@@ -294,7 +299,7 @@ namespace Studienarbeit_Bildeditor
                 txtbx_font.Text = FontText.FontFamily.Name+", "+FontText.Style+", "+FontText.SizeInPoints+"pt";
                 }
 
-                g.DrawString(txtbx_text.Text, FontText, FontBrush, XCoord, YCoord);
+                g.DrawString(txtbx_text.Text, FontText, FontBrush, new Rectangle(XCoord,YCoord,Breite,Hoehe));
 
 
 
@@ -347,11 +352,16 @@ namespace Studienarbeit_Bildeditor
 
         private void btn_insert_Click(object sender, EventArgs e)
         {
-            Bitmap x = new Bitmap(pctbx_Bildbereich.Width, pctbx_Bildbereich.Height);
-            pctbx_Bildbereich.DrawToBitmap(x, new Rectangle(0, 0, pctbx_Bildbereich.Width, pctbx_Bildbereich.Height));
-            BearbeitungsbereichBild = x;
-            Eingefügt = true;
+
+                Bitmap x = new Bitmap(pctbx_Bildbereich.Width, pctbx_Bildbereich.Height);
+                Einfügen = true;
+                pctbx_Bildbereich.DrawToBitmap(x, new Rectangle(0, 0, pctbx_Bildbereich.Width, pctbx_Bildbereich.Height));
+                BearbeitungsbereichBild = x;
+                Einfügen = false;
+                Eingefügt = true;
+            
             this.pctbx_Bildbereich.Refresh();
+           
         }
 
         private void txtbx_text_TextChanged(object sender, EventArgs e)
