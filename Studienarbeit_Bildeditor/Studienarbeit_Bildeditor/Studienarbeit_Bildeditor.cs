@@ -92,6 +92,17 @@ namespace Studienarbeit_Bildeditor
                     Hoehe = Hoehe * -1;
                 
                 }
+                if (XCoord + Breite >= 807)
+                {
+                    Breite = 807 - XCoord;
+                    Nmbrs_Breite.Value = Breite;
+                }
+                if (YCoord + Hoehe >= 299)
+                {
+                    Hoehe = 299 - YCoord;
+                    Nmbrs_Hoehe.Value = Hoehe;
+
+                }
                 
                 Nmbrs_Breite.Value = Breite;
                 Nmbrs_Hoehe.Value = Hoehe;
