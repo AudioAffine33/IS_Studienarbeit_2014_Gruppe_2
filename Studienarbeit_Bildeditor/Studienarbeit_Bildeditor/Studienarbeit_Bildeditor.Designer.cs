@@ -227,12 +227,14 @@
             this.btn_reset.Text = "&Zurücksetzen";
             this.btn_reset.UseVisualStyleBackColor = true;
             this.btn_reset.Click += new System.EventHandler(this.btn_reset_Click);
+            this.btn_reset.MouseDown += new System.Windows.Forms.MouseEventHandler(this.btn_reset_MouseDown);
+            this.btn_reset.MouseUp += new System.Windows.Forms.MouseEventHandler(this.btn_reset_MouseUp);
             // 
             // btn_insert
             // 
             this.btn_insert.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btn_insert.BackgroundImage")));
             this.btn_insert.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btn_insert.FlatAppearance.BorderColor = System.Drawing.Color.Black;
+            this.btn_insert.FlatAppearance.BorderColor = System.Drawing.Color.Aqua;
             this.btn_insert.FlatAppearance.BorderSize = 0;
             this.btn_insert.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_insert.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -243,6 +245,8 @@
             this.btn_insert.Text = "&Einfügen";
             this.btn_insert.UseVisualStyleBackColor = true;
             this.btn_insert.Click += new System.EventHandler(this.btn_insert_Click);
+            this.btn_insert.MouseDown += new System.Windows.Forms.MouseEventHandler(this.btn_insert_MouseDown);
+            this.btn_insert.MouseUp += new System.Windows.Forms.MouseEventHandler(this.btn_insert_MouseUp);
             // 
             // lbl_color
             // 
@@ -280,6 +284,8 @@
             this.btn_color.Text = "...";
             this.btn_color.UseVisualStyleBackColor = false;
             this.btn_color.Click += new System.EventHandler(this.btn_color_Click);
+            this.btn_color.MouseDown += new System.Windows.Forms.MouseEventHandler(this.btn_color_MouseDown);
+            this.btn_color.MouseUp += new System.Windows.Forms.MouseEventHandler(this.btn_color_MouseUp);
             // 
             // lbl_text
             // 
@@ -336,6 +342,8 @@
             this.btn_font.Text = "...";
             this.btn_font.UseVisualStyleBackColor = true;
             this.btn_font.Click += new System.EventHandler(this.btn_font_Click);
+            this.btn_font.MouseDown += new System.Windows.Forms.MouseEventHandler(this.btn_font_MouseDown);
+            this.btn_font.MouseUp += new System.Windows.Forms.MouseEventHandler(this.btn_font_MouseUp);
             // 
             // lbl_img
             // 
@@ -372,6 +380,8 @@
             this.btn_img.Text = "...";
             this.btn_img.UseVisualStyleBackColor = true;
             this.btn_img.Click += new System.EventHandler(this.btn_img_Click);
+            this.btn_img.MouseDown += new System.Windows.Forms.MouseEventHandler(this.btn_img_MouseDown);
+            this.btn_img.MouseUp += new System.Windows.Forms.MouseEventHandler(this.btn_img_MouseUp);
             // 
             // fd_font
             // 

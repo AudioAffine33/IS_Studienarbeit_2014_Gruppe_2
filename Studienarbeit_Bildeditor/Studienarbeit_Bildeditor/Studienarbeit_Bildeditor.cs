@@ -201,15 +201,21 @@ namespace Studienarbeit_Bildeditor
 
         private void btn_img_Click(object sender, EventArgs e)
         {
-            if (AuswahlTyp == "Bild") {
+            if (AuswahlTyp == "Bild")
+            {
                 this.ofd_img.Filter = "Images (*.BMP;*;.JPG;*.GIF)|*.BMP;*.JPG;*.GIF|" + "All files (*.*)|*.*";
                 this.ofd_img.Title = "Bild auswählen";
 
-                if (ofd_img.ShowDialog() == System.Windows.Forms.DialogResult.OK) {
+                if (ofd_img.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+                {
                     AuswahlBild = new Bitmap(ofd_img.FileName);
                     txtbx_img.Text = Convert.ToString(ofd_img.FileName);
                     Bildauswahl = true;
                 }
+            }
+            else {
+
+                MessageBox.Show("Bildauswahl nur bei Auswahl von Bild im Typbereich möglich");
             }
         }
 
@@ -335,7 +341,7 @@ namespace Studienarbeit_Bildeditor
                 BearbeitungsbereichBild = pctbx_Bildbereich.Image;
                 Eingefügt = true;
             }
-
+            this.pctbx_Bildbereich.Refresh();
         }
 
         private void txtbx_text_TextChanged(object sender, EventArgs e)
@@ -363,6 +369,56 @@ namespace Studienarbeit_Bildeditor
             }
             
             this.pctbx_Bildbereich.Refresh();
+        }
+
+        private void btn_reset_MouseDown(object sender, MouseEventArgs e)
+        {
+            btn_reset.FlatAppearance.BorderSize = 2;
+        }
+
+        private void btn_reset_MouseUp(object sender, MouseEventArgs e)
+        {
+            btn_reset.FlatAppearance.BorderSize = 0;
+        }
+
+        private void btn_insert_MouseDown(object sender, MouseEventArgs e)
+        {
+            btn_insert.FlatAppearance.BorderSize = 2;
+        }
+
+        private void btn_insert_MouseUp(object sender, MouseEventArgs e)
+        {
+            btn_insert.FlatAppearance.BorderSize = 0;
+        }
+
+        private void btn_color_MouseDown(object sender, MouseEventArgs e)
+        {
+            btn_color.FlatAppearance.BorderSize = 2;
+        }
+
+        private void btn_color_MouseUp(object sender, MouseEventArgs e)
+        {
+            btn_color.FlatAppearance.BorderSize = 0;
+        }
+
+        private void btn_font_MouseDown(object sender, MouseEventArgs e)
+        {
+            btn_font.FlatAppearance.BorderSize = 2;
+        }
+
+        private void btn_font_MouseUp(object sender, MouseEventArgs e)
+        {
+            btn_font.FlatAppearance.BorderSize = 0;
+        }
+
+        private void btn_img_MouseDown(object sender, MouseEventArgs e)
+        {
+            btn_img.FlatAppearance.BorderSize = 2;
+        }
+
+        private void btn_img_MouseUp(object sender, MouseEventArgs e)
+        {
+            btn_img.FlatAppearance.BorderSize = 0;
         }
 
         
