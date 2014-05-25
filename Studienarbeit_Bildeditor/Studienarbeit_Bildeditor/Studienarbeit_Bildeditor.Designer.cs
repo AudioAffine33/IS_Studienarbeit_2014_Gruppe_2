@@ -78,7 +78,7 @@
             // 
             this.lbl_X.AutoSize = true;
             this.lbl_X.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_X.Location = new System.Drawing.Point(6, 22);
+            this.lbl_X.Location = new System.Drawing.Point(6, 26);
             this.lbl_X.Name = "lbl_X";
             this.lbl_X.Size = new System.Drawing.Size(23, 18);
             this.lbl_X.TabIndex = 1;
@@ -88,7 +88,7 @@
             // 
             this.lbl_Y.AutoSize = true;
             this.lbl_Y.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_Y.Location = new System.Drawing.Point(9, 54);
+            this.lbl_Y.Location = new System.Drawing.Point(9, 58);
             this.lbl_Y.Name = "lbl_Y";
             this.lbl_Y.Size = new System.Drawing.Size(20, 18);
             this.lbl_Y.TabIndex = 2;
@@ -98,7 +98,7 @@
             // 
             this.Nmbrs_X.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.Nmbrs_X.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Nmbrs_X.Location = new System.Drawing.Point(35, 19);
+            this.Nmbrs_X.Location = new System.Drawing.Point(35, 24);
             this.Nmbrs_X.Maximum = new decimal(new int[] {
             807,
             0,
@@ -113,7 +113,7 @@
             // 
             this.Nmbrs_Y.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.Nmbrs_Y.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Nmbrs_Y.Location = new System.Drawing.Point(35, 51);
+            this.Nmbrs_Y.Location = new System.Drawing.Point(35, 56);
             this.Nmbrs_Y.Maximum = new decimal(new int[] {
             299,
             0,
@@ -128,7 +128,7 @@
             // 
             this.lbl_Breite.AutoSize = true;
             this.lbl_Breite.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_Breite.Location = new System.Drawing.Point(101, 22);
+            this.lbl_Breite.Location = new System.Drawing.Point(101, 24);
             this.lbl_Breite.Name = "lbl_Breite";
             this.lbl_Breite.Size = new System.Drawing.Size(54, 18);
             this.lbl_Breite.TabIndex = 5;
@@ -138,7 +138,7 @@
             // 
             this.lbl_Hoehe.AutoSize = true;
             this.lbl_Hoehe.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_Hoehe.Location = new System.Drawing.Point(101, 56);
+            this.lbl_Hoehe.Location = new System.Drawing.Point(101, 58);
             this.lbl_Hoehe.Name = "lbl_Hoehe";
             this.lbl_Hoehe.Size = new System.Drawing.Size(49, 18);
             this.lbl_Hoehe.TabIndex = 6;
@@ -148,7 +148,7 @@
             // 
             this.Nmbrs_Hoehe.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.Nmbrs_Hoehe.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Nmbrs_Hoehe.Location = new System.Drawing.Point(161, 53);
+            this.Nmbrs_Hoehe.Location = new System.Drawing.Point(161, 56);
             this.Nmbrs_Hoehe.Maximum = new decimal(new int[] {
             299,
             0,
@@ -168,7 +168,7 @@
             // 
             this.Nmbrs_Breite.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.Nmbrs_Breite.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Nmbrs_Breite.Location = new System.Drawing.Point(161, 19);
+            this.Nmbrs_Breite.Location = new System.Drawing.Point(161, 24);
             this.Nmbrs_Breite.Maximum = new decimal(new int[] {
             807,
             0,
@@ -219,7 +219,7 @@
             this.btn_reset.FlatAppearance.BorderSize = 0;
             this.btn_reset.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_reset.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_reset.ForeColor = System.Drawing.Color.Black;
+            this.btn_reset.ForeColor = System.Drawing.Color.White;
             this.btn_reset.Location = new System.Drawing.Point(8, 157);
             this.btn_reset.Name = "btn_reset";
             this.btn_reset.Size = new System.Drawing.Size(112, 33);
@@ -242,6 +242,7 @@
             this.btn_insert.TabIndex = 13;
             this.btn_insert.Text = "&Einfügen";
             this.btn_insert.UseVisualStyleBackColor = true;
+            this.btn_insert.Click += new System.EventHandler(this.btn_insert_Click);
             // 
             // lbl_color
             // 
@@ -377,10 +378,6 @@
             this.fd_font.FontMustExist = true;
             this.fd_font.Apply += new System.EventHandler(this.fd_font_Apply);
             // 
-            // ofd_img
-            // 
-            this.ofd_img.FileOk += new System.ComponentModel.CancelEventHandler(this.ofd_img_FileOk);
-            // 
             // grpbx_bldel
             // 
             this.grpbx_bldel.BackColor = System.Drawing.Color.Transparent;
@@ -399,6 +396,7 @@
             this.grpbx_bldel.Controls.Add(this.lbl_font);
             this.grpbx_bldel.Controls.Add(this.txtbx_text);
             this.grpbx_bldel.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.grpbx_bldel.ForeColor = System.Drawing.Color.White;
             this.grpbx_bldel.Location = new System.Drawing.Point(337, 38);
             this.grpbx_bldel.Name = "grpbx_bldel";
             this.grpbx_bldel.Size = new System.Drawing.Size(504, 203);
@@ -419,6 +417,7 @@
             this.grpbx_brbbereich.Controls.Add(this.Nmbrs_Hoehe);
             this.grpbx_brbbereich.Controls.Add(this.lbl_Hoehe);
             this.grpbx_brbbereich.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.grpbx_brbbereich.ForeColor = System.Drawing.Color.White;
             this.grpbx_brbbereich.Location = new System.Drawing.Point(21, 38);
             this.grpbx_brbbereich.Name = "grpbx_brbbereich";
             this.grpbx_brbbereich.Size = new System.Drawing.Size(310, 203);
@@ -431,6 +430,7 @@
             this.grpbx_bild.BackColor = System.Drawing.Color.Transparent;
             this.grpbx_bild.Controls.Add(this.pctbx_Bildbereich);
             this.grpbx_bild.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.grpbx_bild.ForeColor = System.Drawing.Color.White;
             this.grpbx_bild.Location = new System.Drawing.Point(21, 262);
             this.grpbx_bild.Name = "grpbx_bild";
             this.grpbx_bild.Size = new System.Drawing.Size(820, 331);
@@ -452,7 +452,7 @@
             // 
             // ms_menu
             // 
-            this.ms_menu.BackColor = System.Drawing.Color.White;
+            this.ms_menu.BackColor = System.Drawing.Color.Transparent;
             this.ms_menu.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ms_menu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tsm_datei});
@@ -492,8 +492,9 @@
             this.Cursor = System.Windows.Forms.Cursors.Default;
             this.DoubleBuffered = true;
             this.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
-            this.ForeColor = System.Drawing.SystemColors.InfoText;
+            this.ForeColor = System.Drawing.Color.White;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.ms_menu;
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "Studienarbeit_Bildeditor";

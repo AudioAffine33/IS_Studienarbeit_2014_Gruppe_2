@@ -17,6 +17,7 @@ namespace Studienarbeit_Bildeditor
         bool Fontauswahl = false;
         bool TimeGerade = true;
         bool Texteingabe = false;
+        bool Eingefügt = false;
         int Time = 0;
         int XCoord = 0;
         int YCoord = 0;
@@ -29,7 +30,8 @@ namespace Studienarbeit_Bildeditor
         Pen Bearbeitungsbereich;
         Color AuswahlColor = Color.FromArgb(255,255,255);
         Font FontText;
-        Graphics AuswahlBild;
+        Image AuswahlBild;
+        Image BearbeitungsbereichBild;
         int Textbreite;
  
 
@@ -200,20 +202,17 @@ namespace Studienarbeit_Bildeditor
         private void btn_img_Click(object sender, EventArgs e)
         {
             if (AuswahlTyp == "Bild") {
+                this.ofd_img.Filter = "Images (*.BMP;*;.JPG;*.GIF)|*.BMP;*.JPG;*.GIF|" + "All files (*.*)|*.*";
+                this.ofd_img.Title = "Bild auswählen";
 
                 if (ofd_img.ShowDialog() == System.Windows.Forms.DialogResult.OK) {
-                
-                    txtbx_img.Text = ofd_img.FileName;
+                    AuswahlBild = new Bitmap(ofd_img.FileName);
+                    txtbx_img.Text = Convert.ToString(ofd_img.FileName);
                     Bildauswahl = true;
                 }
             }
         }
 
-        private void ofd_img_FileOk(object sender, CancelEventArgs e)
-        {
-            txtbx_img.Text = ofd_img.FileName;
-
-        }
 
         private void fd_font_Apply(object sender, EventArgs e)
         {
@@ -225,9 +224,14 @@ namespace Studienarbeit_Bildeditor
             Graphics g = e.Graphics;
             Point Point_LO = new Point(XCoord, YCoord);
             Point Point_RU = new Point(Breite+XCoord, Hoehe+YCoord);
-         //   Point Point_RO = new Point(XCoord, Hoehe + YCoord);
 
 
+
+            if( Eingefügt == true){
+                
+                g.DrawImage(BearbeitungsbereichBild,0,0,807,299);
+
+            }
 
             if (TimeGerade == true)
             {
@@ -301,8 +305,7 @@ namespace Studienarbeit_Bildeditor
 
                  if (Bildauswahl == true) {
 
-                     
-                 
+                     g.DrawImage(AuswahlBild, XCoord, YCoord, Breite, Hoehe);
                  }
              
              }
@@ -323,6 +326,16 @@ namespace Studienarbeit_Bildeditor
             Nmbrs_Hoehe.Value = Hoehe;
 
             this.pctbx_Bildbereich.Refresh();
+        }
+
+        private void btn_insert_Click(object sender, EventArgs e)
+        {
+            if (pctbx_Bildbereich.Image != null)
+            {
+                BearbeitungsbereichBild = pctbx_Bildbereich.Image;
+                Eingefügt = true;
+            }
+
         }
 
         private void txtbx_text_TextChanged(object sender, EventArgs e)
@@ -351,6 +364,8 @@ namespace Studienarbeit_Bildeditor
             
             this.pctbx_Bildbereich.Refresh();
         }
+
+        
 
 
        
