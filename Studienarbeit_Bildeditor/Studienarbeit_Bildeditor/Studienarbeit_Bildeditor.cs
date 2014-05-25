@@ -245,8 +245,8 @@ namespace Studienarbeit_Bildeditor
 
 
             if( Eingefügt == true){
-                
-                g.DrawImage(BearbeitungsbereichBild,0,0,807,299);
+
+                g.DrawImage(BearbeitungsbereichBild, 0, 0, pctbx_Bildbereich.Width, pctbx_Bildbereich.Height);
 
             }
 
@@ -347,11 +347,10 @@ namespace Studienarbeit_Bildeditor
 
         private void btn_insert_Click(object sender, EventArgs e)
         {
-            if (pctbx_Bildbereich.Image != null)
-            {
-                BearbeitungsbereichBild = pctbx_Bildbereich.Image;
-                Eingefügt = true;
-            }
+            Bitmap x = new Bitmap(pctbx_Bildbereich.Width, pctbx_Bildbereich.Height);
+            pctbx_Bildbereich.DrawToBitmap(x, new Rectangle(0, 0, pctbx_Bildbereich.Width, pctbx_Bildbereich.Height));
+            BearbeitungsbereichBild = x;
+            Eingefügt = true;
             this.pctbx_Bildbereich.Refresh();
         }
 
