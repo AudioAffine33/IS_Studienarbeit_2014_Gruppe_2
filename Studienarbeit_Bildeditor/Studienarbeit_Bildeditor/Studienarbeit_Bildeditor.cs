@@ -12,11 +12,11 @@ namespace Studienarbeit_Bildeditor
 {
     public partial class Studienarbeit_Bildeditor : Form
     {
+        bool Delete;
         bool Bildauswahl = false;
         bool Farbauswahl = false;
         bool Fontauswahl = false;
         bool TimeGerade = true;
-        bool Texteingabe = false;
         bool Eingefügt = false;
         bool Einfügen = false;
         int Time = 0;
@@ -246,11 +246,14 @@ namespace Studienarbeit_Bildeditor
             Point Point_RU = new Point(Breite+XCoord, Hoehe+YCoord);
 
 
+            if (Delete == false)
+            {
+                if (Eingefügt == true)
+                {
 
-            if( Eingefügt == true){
-
-                g.DrawImage(BearbeitungsbereichBild,-1,-1,pctbx_Bildbereich.Width,pctbx_Bildbereich.Height);
-
+                    g.DrawImage(BearbeitungsbereichBild, -1, -1, pctbx_Bildbereich.Width, pctbx_Bildbereich.Height);
+                
+                }
             }
 
             if (TimeGerade == true)
@@ -300,7 +303,7 @@ namespace Studienarbeit_Bildeditor
                 }
 
                 g.DrawString(txtbx_text.Text, FontText, FontBrush, new Rectangle(XCoord,YCoord,Breite,Hoehe));
-
+               
 
 
 
@@ -311,7 +314,7 @@ namespace Studienarbeit_Bildeditor
                 txtbx_font.Text = "";
                 txtbx_text.Text = "";
                 g.DrawLine(LiniePen, Point_LO, Point_RU);
-
+       
 
 
             }
@@ -321,7 +324,7 @@ namespace Studienarbeit_Bildeditor
                 txtbx_font.Text = "";
                 txtbx_text.Text = "";
                 g.DrawRectangle(RechteckPen, XCoord, YCoord, Breite, Hoehe);
-
+           
             }
              else if (AuswahlTyp == "Bild") {
 
@@ -331,7 +334,6 @@ namespace Studienarbeit_Bildeditor
                  }
              
              }
-
            
         }
 
@@ -359,17 +361,12 @@ namespace Studienarbeit_Bildeditor
                 BearbeitungsbereichBild = x;
                 Einfügen = false;
                 Eingefügt = true;
+                Delete = false;
             
             this.pctbx_Bildbereich.Refresh();
            
         }
 
-        private void txtbx_text_TextChanged(object sender, EventArgs e)
-        {
-            
-            Texteingabe = true;
-          
-        }
 
         private void tim_Brbbereich_Tick(object sender, EventArgs e)
         {
@@ -441,10 +438,83 @@ namespace Studienarbeit_Bildeditor
             btn_img.FlatAppearance.BorderSize = 0;
         }
 
+        private void Menu_Neu_Click(object sender, EventArgs e)
+        {
+         
+            
+                Delete = true;
+            
+
+        }
+
+
+        private void btn_Speichern_Click(object sender, EventArgs e)
+        {
+
+            this.sfd_Speichern.Filter = "Images (*.BMP;)|*.BMP;";
+            this.sfd_Speichern.Title = "Datei Speichern";
+            String Filename = "";
+            System.Drawing.Imaging.ImageFormat Speicherformat = System.Drawing.Imaging.ImageFormat.Bmp;
+
+            if (sfd_Speichern.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            {
+                Einfügen = true;
+                Bitmap Speicherbild = new Bitmap(pctbx_Bildbereich.Width, pctbx_Bildbereich.Height);
+                pctbx_Bildbereich.DrawToBitmap(Speicherbild, new Rectangle(0, 0, pctbx_Bildbereich.Width, pctbx_Bildbereich.Height));
+
+                if (Filename == null)
+                {
+                    Filename = sfd_Speichern.FileName;
+                }
+
+                Speicherbild.Save(Filename, Speicherformat);
+                Einfügen = false;
+            }
+                         
+                        
+        }
+
+        private void btn_Laden_Click(object sender, EventArgs e)
+        {
+            this.ofd_Laden.Filter = "Images (*.BMP;)|*.BMP;";
+            this.ofd_Laden.Title = "Datei Laden";
+
+            if (ofd_Laden.ShowDialog() == System.Windows.Forms.DialogResult.OK) {
+               
+                BearbeitungsbereichBild = Image.FromFile(ofd_Laden.FileName);
+                Eingefügt = true;
+
+                this.pctbx_Bildbereich.Refresh();
+            
+            
+            }
+        }
+
+        private void Menu_Beenden_Click(object sender, EventArgs e)
+        {
+            if (MessageBox.Show("Wollen Sie das Programm wirklich beenden? Alle nicht gespeicherten Änderungen gehen verloren.", "Programm Beenden", MessageBoxButtons.OKCancel) == DialogResult.Cancel)
+            {
+
+
+
+            }
+            else
+            {
+
+                Application.Exit();
+            }
+        }
+
+       
+              
+
+              
+        }
+
         
 
 
        
        
     }
-}
+

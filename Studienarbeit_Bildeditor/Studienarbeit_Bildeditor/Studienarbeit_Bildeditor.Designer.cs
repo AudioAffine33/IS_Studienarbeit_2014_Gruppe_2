@@ -62,7 +62,13 @@
             this.pctbx_Bildbereich = new System.Windows.Forms.PictureBox();
             this.ms_menu = new System.Windows.Forms.MenuStrip();
             this.tsm_datei = new System.Windows.Forms.ToolStripMenuItem();
+            this.btn_Speichern = new System.Windows.Forms.ToolStripMenuItem();
+            this.btn_Laden = new System.Windows.Forms.ToolStripMenuItem();
+            this.Menu_Beenden = new System.Windows.Forms.ToolStripMenuItem();
             this.tim_Brbbereich = new System.Windows.Forms.Timer(this.components);
+            this.ofd_Laden = new System.Windows.Forms.OpenFileDialog();
+            this.sfd_Speichern = new System.Windows.Forms.SaveFileDialog();
+            this.Menu_Neu = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.Nmbrs_X)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Nmbrs_Y)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Nmbrs_Hoehe)).BeginInit();
@@ -305,7 +311,6 @@
             this.txtbx_text.Name = "txtbx_text";
             this.txtbx_text.Size = new System.Drawing.Size(181, 19);
             this.txtbx_text.TabIndex = 18;
-            this.txtbx_text.TextChanged += new System.EventHandler(this.txtbx_text_TextChanged);
             // 
             // lbl_font
             // 
@@ -463,6 +468,7 @@
             // ms_menu
             // 
             this.ms_menu.BackColor = System.Drawing.Color.Transparent;
+            this.ms_menu.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("ms_menu.BackgroundImage")));
             this.ms_menu.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ms_menu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tsm_datei});
@@ -475,16 +481,61 @@
             // 
             // tsm_datei
             // 
-            this.tsm_datei.BackColor = System.Drawing.Color.White;
+            this.tsm_datei.BackColor = System.Drawing.Color.Transparent;
+            this.tsm_datei.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("tsm_datei.BackgroundImage")));
+            this.tsm_datei.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.Menu_Neu,
+            this.btn_Speichern,
+            this.btn_Laden,
+            this.Menu_Beenden});
             this.tsm_datei.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tsm_datei.ForeColor = System.Drawing.Color.White;
+            this.tsm_datei.ImageTransparentColor = System.Drawing.Color.White;
             this.tsm_datei.Name = "tsm_datei";
             this.tsm_datei.Size = new System.Drawing.Size(58, 22);
             this.tsm_datei.Text = "&Datei";
+            // 
+            // btn_Speichern
+            // 
+            this.btn_Speichern.Image = ((System.Drawing.Image)(resources.GetObject("btn_Speichern.Image")));
+            this.btn_Speichern.Name = "btn_Speichern";
+            this.btn_Speichern.Size = new System.Drawing.Size(152, 22);
+            this.btn_Speichern.Text = "Speichern";
+            this.btn_Speichern.Click += new System.EventHandler(this.btn_Speichern_Click);
+            // 
+            // btn_Laden
+            // 
+            this.btn_Laden.Image = ((System.Drawing.Image)(resources.GetObject("btn_Laden.Image")));
+            this.btn_Laden.Name = "btn_Laden";
+            this.btn_Laden.Size = new System.Drawing.Size(152, 22);
+            this.btn_Laden.Text = "Laden";
+            this.btn_Laden.Click += new System.EventHandler(this.btn_Laden_Click);
+            // 
+            // Menu_Beenden
+            // 
+            this.Menu_Beenden.Image = ((System.Drawing.Image)(resources.GetObject("Menu_Beenden.Image")));
+            this.Menu_Beenden.Name = "Menu_Beenden";
+            this.Menu_Beenden.Size = new System.Drawing.Size(152, 22);
+            this.Menu_Beenden.Text = "Beenden";
+            this.Menu_Beenden.Click += new System.EventHandler(this.Menu_Beenden_Click);
             // 
             // tim_Brbbereich
             // 
             this.tim_Brbbereich.Enabled = true;
             this.tim_Brbbereich.Tick += new System.EventHandler(this.tim_Brbbereich_Tick);
+            // 
+            // ofd_Laden
+            // 
+            this.ofd_Laden.FileName = "openFileDialog1";
+            // 
+            // Menu_Neu
+            // 
+            this.Menu_Neu.BackColor = System.Drawing.Color.Transparent;
+            this.Menu_Neu.Image = ((System.Drawing.Image)(resources.GetObject("Menu_Neu.Image")));
+            this.Menu_Neu.Name = "Menu_Neu";
+            this.Menu_Neu.Size = new System.Drawing.Size(152, 22);
+            this.Menu_Neu.Text = "Neu";
+            this.Menu_Neu.Click += new System.EventHandler(this.Menu_Neu_Click);
             // 
             // Studienarbeit_Bildeditor
             // 
@@ -561,6 +612,12 @@
         private System.Windows.Forms.ToolStripMenuItem tsm_datei;
         private System.Windows.Forms.PictureBox pctbx_Bildbereich;
         private System.Windows.Forms.Timer tim_Brbbereich;
+        private System.Windows.Forms.ToolStripMenuItem btn_Speichern;
+        private System.Windows.Forms.ToolStripMenuItem btn_Laden;
+        private System.Windows.Forms.ToolStripMenuItem Menu_Beenden;
+        private System.Windows.Forms.OpenFileDialog ofd_Laden;
+        private System.Windows.Forms.SaveFileDialog sfd_Speichern;
+        private System.Windows.Forms.ToolStripMenuItem Menu_Neu;
     }
 }
 
