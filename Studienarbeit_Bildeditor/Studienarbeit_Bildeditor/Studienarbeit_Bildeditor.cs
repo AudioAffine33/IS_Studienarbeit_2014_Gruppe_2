@@ -12,6 +12,9 @@ namespace Studienarbeit_Bildeditor
 {
     public partial class Studienarbeit_Bildeditor : Form
     {
+        bool Radierer = false;
+        bool Radiererclicked = false;
+        bool fuellen = false;
         bool Delete;
         bool Bildauswahl = false;
         bool Farbauswahl = false;
@@ -26,8 +29,8 @@ namespace Studienarbeit_Bildeditor
         int Breite = 807;
         string AuswahlTyp;
         SolidBrush FontBrush = new SolidBrush(System.Drawing.Color.Black);
-        Pen LiniePen = new Pen(Brushes.Black);
-        Pen RechteckPen = new Pen(Brushes.Black);
+        Pen Kontur = new Pen(Brushes.Black);
+        Brush Fill = Brushes.Black;
         Pen Bearbeitungsbereich;
         Color AuswahlColor = Color.FromArgb(255,255,255);
         Font FontText;
@@ -129,7 +132,7 @@ namespace Studienarbeit_Bildeditor
         {
             AuswahlTyp = lstbx_typ.SelectedItem.ToString();
 
-            if (AuswahlTyp == "Linie" | AuswahlTyp == "Rechteck" | AuswahlTyp == "Text")
+            if (AuswahlTyp == "Linie" | AuswahlTyp == "Rechteck" | AuswahlTyp == "Text"| AuswahlTyp == "Ellipse")
             {
   
                 txtbx_color.Enabled = true;
@@ -166,7 +169,7 @@ namespace Studienarbeit_Bildeditor
         private void btn_color_Click(object sender, EventArgs e)
         {
 
-            if (AuswahlTyp == "Linie" | AuswahlTyp == "Rechteck" | AuswahlTyp == "Text")
+            if (AuswahlTyp == "Linie" | AuswahlTyp == "Rechteck" | AuswahlTyp == "Text" | AuswahlTyp == "Ellipse")
             {
 
                 if (cd_color.ShowDialog() == System.Windows.Forms.DialogResult.OK)
@@ -174,9 +177,10 @@ namespace Studienarbeit_Bildeditor
 
                     AuswahlColor = cd_color.Color;
                     txtbx_color.BackColor = AuswahlColor;
-                    LiniePen = new Pen(AuswahlColor);
-                    RechteckPen = new Pen(AuswahlColor);
+                   
+                    Kontur = new Pen(AuswahlColor);
                     FontBrush = new SolidBrush(AuswahlColor);
+                    Fill = new SolidBrush(AuswahlColor);
                     Farbauswahl = true;
 
                     pctbx_Bildbereich.Refresh();
@@ -187,10 +191,11 @@ namespace Studienarbeit_Bildeditor
             }
             else { 
             
-                MessageBox.Show("Farbauswahl nur bei Linie, Rechteck und Text möglich");
+                MessageBox.Show("Farbauswahl nur bei Linie, Rechteck, Ellipse und Text möglich");
             }
 
         }
+
 
         private void btn_font_Click(object sender, EventArgs e)
         {
@@ -245,55 +250,61 @@ namespace Studienarbeit_Bildeditor
             Point Point_LO = new Point(XCoord, YCoord);
             Point Point_RU = new Point(Breite+XCoord, Hoehe+YCoord);
 
-
+           
             if (Delete == false)
             {
+               
                 if (Eingefügt == true)
                 {
-
+                   
                     g.DrawImage(BearbeitungsbereichBild, -1, -1, pctbx_Bildbereich.Width, pctbx_Bildbereich.Height);
-                
+                 
                 }
+               
             }
 
-            if (TimeGerade == true)
-            {
-                if (Farbauswahl == false)
+                if (TimeGerade == true)
+                {
+                    if (Farbauswahl == false)
+                    {
+
+                        Bearbeitungsbereich = new Pen(Brushes.Black);
+                    }
+                    else
+                    {
+                        Bearbeitungsbereich = new Pen(AuswahlColor);
+                    }
+
+                    Bearbeitungsbereich.DashStyle = System.Drawing.Drawing2D.DashStyle.Dash;
+
+                }
+                else if (TimeGerade == false)
                 {
 
-                    Bearbeitungsbereich = new Pen(Brushes.Black);
+                    Bearbeitungsbereich = new Pen(Color.White);
+                    Bearbeitungsbereich.DashStyle = System.Drawing.Drawing2D.DashStyle.Dash;
                 }
+
+                if (Einfügen == true) { }
                 else
                 {
-                    Bearbeitungsbereich = new Pen(AuswahlColor);
-                }
-
-                Bearbeitungsbereich.DashStyle = System.Drawing.Drawing2D.DashStyle.Dash;
-             
-            }
-            else if (TimeGerade == false) {
-
-                Bearbeitungsbereich = new Pen(Color.White);
-                }
-            if (Einfügen == true) { }
-            else
-            {
-                if (XCoord >= 0 | YCoord >= 0 | Breite <= 804 | Hoehe <= 296)
-                {
+                    if (XCoord >= 0 | YCoord >= 0 | Breite <= 804 | Hoehe <= 296)
+                    {
 
 
-                    g.DrawRectangle(Bearbeitungsbereich, XCoord, YCoord, Breite, Hoehe);
+                        g.DrawRectangle(Bearbeitungsbereich, XCoord, YCoord, Breite, Hoehe);
 
-                }
-                else
-                {
+                    }
+                    else
+                    {
 
 
-                    g.DrawRectangle(Bearbeitungsbereich, 0, 0, 804, 296);
+                        g.DrawRectangle(Bearbeitungsbereich, 0, 0, 804, 296);
+
+                    }
 
                 }
 
-            }
              if (AuswahlTyp == "Text")
             {
 
@@ -307,33 +318,80 @@ namespace Studienarbeit_Bildeditor
 
 
 
-
-            }
-            else if (AuswahlTyp == "Linie")
-            {
-                txtbx_font.Text = "";
-                txtbx_text.Text = "";
-                g.DrawLine(LiniePen, Point_LO, Point_RU);
-       
-
-
+            
             }
 
-            else if (AuswahlTyp == "Rechteck")
-            {
-                txtbx_font.Text = "";
-                txtbx_text.Text = "";
-                g.DrawRectangle(RechteckPen, XCoord, YCoord, Breite, Hoehe);
-           
-            }
-             else if (AuswahlTyp == "Bild") {
 
-                 if (Bildauswahl == true) {
+             else if (AuswahlTyp == "Linie")
+             {
+                 txtbx_font.Text = "";
+                 txtbx_text.Text = "";
+                 g.DrawLine(Kontur, Point_LO, Point_RU);
+
+
+
+             }
+
+             else if (AuswahlTyp == "Rechteck")
+             {
+                 txtbx_font.Text = "";
+                 txtbx_text.Text = "";
+                 if (Radierer == true)
+                 {
+
+                     g.FillRectangle(Brushes.White, XCoord, YCoord, Breite, Hoehe);
+
+                 }
+                 else
+                 {
+                     if (fuellen == true)
+                     {
+                         g.FillRectangle(Fill, XCoord, YCoord, Breite, Hoehe);
+
+                     }
+                     else
+                     {
+
+                         g.DrawRectangle(Kontur, XCoord, YCoord, Breite, Hoehe);
+                     }
+                 }
+             }
+             else if (AuswahlTyp == "Ellipse")
+             {
+
+                 txtbx_font.Text = "";
+                 txtbx_text.Text = "";
+                 if (Radierer == true)
+                 {
+
+                     g.FillEllipse(Brushes.White, XCoord, YCoord, Breite, Hoehe);
+                 }
+                 else
+                 {
+                     if (fuellen == true)
+                     {
+                         g.FillEllipse(Fill, XCoord, YCoord, Breite, Hoehe);
+                     }
+                     else
+                     {
+                         g.DrawEllipse(Kontur, XCoord, YCoord, Breite, Hoehe);
+                     }
+                 }
+             }
+
+             else if (AuswahlTyp == "Bild")
+             {
+
+                 if (Bildauswahl == true)
+                 {
 
                      g.DrawImage(AuswahlBild, XCoord, YCoord, Breite, Hoehe);
                  }
-             
+
              }
+            
+             
+
            
         }
 
@@ -366,7 +424,6 @@ namespace Studienarbeit_Bildeditor
             this.pctbx_Bildbereich.Refresh();
            
         }
-
 
         private void tim_Brbbereich_Tick(object sender, EventArgs e)
         {
@@ -437,6 +494,7 @@ namespace Studienarbeit_Bildeditor
         {
             btn_img.FlatAppearance.BorderSize = 0;
         }
+       
 
         private void Menu_Neu_Click(object sender, EventArgs e)
         {
@@ -490,6 +548,42 @@ namespace Studienarbeit_Bildeditor
             }
         }
 
+        private void btn_fill_Click(object sender, EventArgs e)
+        {
+            if (AuswahlTyp == "Rechteck" | AuswahlTyp == "Ellipse")
+            {
+                fuellen = true;
+            }
+            else
+            {
+
+                MessageBox.Show("Fuellen nur bei Rechteck oder Ellipse möglich");
+
+            }
+        }
+
+        private void btn_kontur_Click(object sender, EventArgs e)
+        {
+            fuellen = false;
+        }
+
+        private void btn_rbract_Click(object sender, EventArgs e)
+        {
+            if (AuswahlTyp == "Rechteck" | AuswahlTyp == "Ellipse")
+            {
+                Radierer = true;
+            }
+            else {
+
+                MessageBox.Show("Für Radierer erst Rechteck oder Ellipse bei der Typauswahl wählen");
+            }
+        }
+        private void btn_rbrdeact_Click(object sender, EventArgs e)
+        {
+            Radierer = false;
+        }
+
+
         private void Menu_Beenden_Click(object sender, EventArgs e)
         {
             if (MessageBox.Show("Wollen Sie das Programm wirklich beenden? Alle nicht gespeicherten Änderungen gehen verloren.", "Programm Beenden", MessageBoxButtons.OKCancel) == DialogResult.Cancel)
@@ -505,16 +599,10 @@ namespace Studienarbeit_Bildeditor
             }
         }
 
-       
-              
-
-              
-        }
-
         
 
-
        
-       
-    }
+        
+      }      
+}
 

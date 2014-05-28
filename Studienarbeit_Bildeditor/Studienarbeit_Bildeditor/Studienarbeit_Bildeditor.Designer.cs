@@ -62,13 +62,19 @@
             this.pctbx_Bildbereich = new System.Windows.Forms.PictureBox();
             this.ms_menu = new System.Windows.Forms.MenuStrip();
             this.tsm_datei = new System.Windows.Forms.ToolStripMenuItem();
+            this.Menu_Neu = new System.Windows.Forms.ToolStripMenuItem();
             this.btn_Speichern = new System.Windows.Forms.ToolStripMenuItem();
             this.btn_Laden = new System.Windows.Forms.ToolStripMenuItem();
             this.Menu_Beenden = new System.Windows.Forms.ToolStripMenuItem();
+            this.Menu_Flaeche = new System.Windows.Forms.ToolStripMenuItem();
+            this.btn_fill = new System.Windows.Forms.ToolStripMenuItem();
+            this.btn_kontur = new System.Windows.Forms.ToolStripMenuItem();
             this.tim_Brbbereich = new System.Windows.Forms.Timer(this.components);
             this.ofd_Laden = new System.Windows.Forms.OpenFileDialog();
             this.sfd_Speichern = new System.Windows.Forms.SaveFileDialog();
-            this.Menu_Neu = new System.Windows.Forms.ToolStripMenuItem();
+            this.radiergummiToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.btn_rbract = new System.Windows.Forms.ToolStripMenuItem();
+            this.btn_rbrdeact = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.Nmbrs_X)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Nmbrs_Y)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Nmbrs_Hoehe)).BeginInit();
@@ -203,6 +209,7 @@
             // lstbx_typ
             // 
             this.lstbx_typ.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.lstbx_typ.Cursor = System.Windows.Forms.Cursors.Hand;
             this.lstbx_typ.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lstbx_typ.FormattingEnabled = true;
             this.lstbx_typ.ItemHeight = 18;
@@ -210,6 +217,7 @@
             "Bild",
             "Linie",
             "Rechteck",
+            "Ellipse",
             "Text"});
             this.lstbx_typ.Location = new System.Drawing.Point(9, 53);
             this.lstbx_typ.Name = "lstbx_typ";
@@ -469,9 +477,11 @@
             // 
             this.ms_menu.BackColor = System.Drawing.Color.Transparent;
             this.ms_menu.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("ms_menu.BackgroundImage")));
-            this.ms_menu.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ms_menu.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ms_menu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.tsm_datei});
+            this.tsm_datei,
+            this.Menu_Flaeche,
+            this.radiergummiToolStripMenuItem});
             this.ms_menu.Location = new System.Drawing.Point(0, 0);
             this.ms_menu.MaximumSize = new System.Drawing.Size(850, 26);
             this.ms_menu.Name = "ms_menu";
@@ -495,29 +505,73 @@
             this.tsm_datei.Size = new System.Drawing.Size(58, 22);
             this.tsm_datei.Text = "&Datei";
             // 
+            // Menu_Neu
+            // 
+            this.Menu_Neu.BackColor = System.Drawing.Color.Navy;
+            this.Menu_Neu.ForeColor = System.Drawing.Color.White;
+            this.Menu_Neu.Name = "Menu_Neu";
+            this.Menu_Neu.Size = new System.Drawing.Size(147, 22);
+            this.Menu_Neu.Text = "Neu";
+            this.Menu_Neu.Click += new System.EventHandler(this.Menu_Neu_Click);
+            // 
             // btn_Speichern
             // 
-            this.btn_Speichern.Image = ((System.Drawing.Image)(resources.GetObject("btn_Speichern.Image")));
+            this.btn_Speichern.BackColor = System.Drawing.Color.Navy;
+            this.btn_Speichern.ForeColor = System.Drawing.Color.White;
             this.btn_Speichern.Name = "btn_Speichern";
-            this.btn_Speichern.Size = new System.Drawing.Size(152, 22);
+            this.btn_Speichern.Size = new System.Drawing.Size(147, 22);
             this.btn_Speichern.Text = "Speichern";
             this.btn_Speichern.Click += new System.EventHandler(this.btn_Speichern_Click);
             // 
             // btn_Laden
             // 
-            this.btn_Laden.Image = ((System.Drawing.Image)(resources.GetObject("btn_Laden.Image")));
+            this.btn_Laden.BackColor = System.Drawing.Color.Navy;
+            this.btn_Laden.ForeColor = System.Drawing.Color.White;
             this.btn_Laden.Name = "btn_Laden";
-            this.btn_Laden.Size = new System.Drawing.Size(152, 22);
+            this.btn_Laden.Size = new System.Drawing.Size(147, 22);
             this.btn_Laden.Text = "Laden";
             this.btn_Laden.Click += new System.EventHandler(this.btn_Laden_Click);
             // 
             // Menu_Beenden
             // 
-            this.Menu_Beenden.Image = ((System.Drawing.Image)(resources.GetObject("Menu_Beenden.Image")));
+            this.Menu_Beenden.BackColor = System.Drawing.Color.Navy;
+            this.Menu_Beenden.ForeColor = System.Drawing.Color.White;
             this.Menu_Beenden.Name = "Menu_Beenden";
-            this.Menu_Beenden.Size = new System.Drawing.Size(152, 22);
+            this.Menu_Beenden.Size = new System.Drawing.Size(147, 22);
             this.Menu_Beenden.Text = "Beenden";
             this.Menu_Beenden.Click += new System.EventHandler(this.Menu_Beenden_Click);
+            // 
+            // Menu_Flaeche
+            // 
+            this.Menu_Flaeche.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("Menu_Flaeche.BackgroundImage")));
+            this.Menu_Flaeche.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.btn_fill,
+            this.btn_kontur});
+            this.Menu_Flaeche.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Menu_Flaeche.ForeColor = System.Drawing.Color.White;
+            this.Menu_Flaeche.Name = "Menu_Flaeche";
+            this.Menu_Flaeche.Size = new System.Drawing.Size(67, 22);
+            this.Menu_Flaeche.Text = "&Fläche";
+            // 
+            // btn_fill
+            // 
+            this.btn_fill.BackColor = System.Drawing.Color.Transparent;
+            this.btn_fill.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btn_fill.BackgroundImage")));
+            this.btn_fill.ForeColor = System.Drawing.Color.White;
+            this.btn_fill.Name = "btn_fill";
+            this.btn_fill.Size = new System.Drawing.Size(152, 22);
+            this.btn_fill.Text = "Füllen";
+            this.btn_fill.Click += new System.EventHandler(this.btn_fill_Click);
+            // 
+            // btn_kontur
+            // 
+            this.btn_kontur.BackColor = System.Drawing.Color.Transparent;
+            this.btn_kontur.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btn_kontur.BackgroundImage")));
+            this.btn_kontur.ForeColor = System.Drawing.Color.White;
+            this.btn_kontur.Name = "btn_kontur";
+            this.btn_kontur.Size = new System.Drawing.Size(152, 22);
+            this.btn_kontur.Text = "Kontur";
+            this.btn_kontur.Click += new System.EventHandler(this.btn_kontur_Click);
             // 
             // tim_Brbbereich
             // 
@@ -528,14 +582,36 @@
             // 
             this.ofd_Laden.FileName = "openFileDialog1";
             // 
-            // Menu_Neu
+            // radiergummiToolStripMenuItem
             // 
-            this.Menu_Neu.BackColor = System.Drawing.Color.Transparent;
-            this.Menu_Neu.Image = ((System.Drawing.Image)(resources.GetObject("Menu_Neu.Image")));
-            this.Menu_Neu.Name = "Menu_Neu";
-            this.Menu_Neu.Size = new System.Drawing.Size(152, 22);
-            this.Menu_Neu.Text = "Neu";
-            this.Menu_Neu.Click += new System.EventHandler(this.Menu_Neu_Click);
+            this.radiergummiToolStripMenuItem.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("radiergummiToolStripMenuItem.BackgroundImage")));
+            this.radiergummiToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.btn_rbract,
+            this.btn_rbrdeact});
+            this.radiergummiToolStripMenuItem.ForeColor = System.Drawing.Color.White;
+            this.radiergummiToolStripMenuItem.Name = "radiergummiToolStripMenuItem";
+            this.radiergummiToolStripMenuItem.Size = new System.Drawing.Size(114, 22);
+            this.radiergummiToolStripMenuItem.Text = "&Radiergummi";
+            // 
+            // btn_rbract
+            // 
+            this.btn_rbract.BackColor = System.Drawing.Color.Transparent;
+            this.btn_rbract.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btn_rbract.BackgroundImage")));
+            this.btn_rbract.ForeColor = System.Drawing.Color.White;
+            this.btn_rbract.Name = "btn_rbract";
+            this.btn_rbract.Size = new System.Drawing.Size(164, 22);
+            this.btn_rbract.Text = "Aktivieren";
+            this.btn_rbract.Click += new System.EventHandler(this.btn_rbract_Click);
+            // 
+            // btn_rbrdeact
+            // 
+            this.btn_rbrdeact.BackColor = System.Drawing.Color.Transparent;
+            this.btn_rbrdeact.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btn_rbrdeact.BackgroundImage")));
+            this.btn_rbrdeact.ForeColor = System.Drawing.Color.White;
+            this.btn_rbrdeact.Name = "btn_rbrdeact";
+            this.btn_rbrdeact.Size = new System.Drawing.Size(164, 22);
+            this.btn_rbrdeact.Text = "Deaktivieren";
+            this.btn_rbrdeact.Click += new System.EventHandler(this.btn_rbrdeact_Click);
             // 
             // Studienarbeit_Bildeditor
             // 
@@ -618,6 +694,12 @@
         private System.Windows.Forms.OpenFileDialog ofd_Laden;
         private System.Windows.Forms.SaveFileDialog sfd_Speichern;
         private System.Windows.Forms.ToolStripMenuItem Menu_Neu;
+        private System.Windows.Forms.ToolStripMenuItem Menu_Flaeche;
+        private System.Windows.Forms.ToolStripMenuItem btn_fill;
+        private System.Windows.Forms.ToolStripMenuItem btn_kontur;
+        private System.Windows.Forms.ToolStripMenuItem radiergummiToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem btn_rbract;
+        private System.Windows.Forms.ToolStripMenuItem btn_rbrdeact;
     }
 }
 
